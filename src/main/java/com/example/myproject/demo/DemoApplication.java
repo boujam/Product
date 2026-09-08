@@ -59,6 +59,13 @@ Git
 git init 	Créer le dépôt Git local
 git status 	Afficher le statut du depot local
 
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/boujam/Product.git
+git push -u origin main
+
 
 
 

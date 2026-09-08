@@ -1,0 +1,127 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo '======================================'
+                echo 'Récupération du projet depuis GitHub'
+                echo '======================================'
+
+                checkout scm
+            }
+        }
+
+        stage('Environment') {
+            steps {
+                echo '======================================'
+                echo 'Vérification de l’environnement'
+                echo '======================================'
+
+                sh '''
+                    echo "Java :"
+                    java -version
+
+                    echo ""
+                    echo "Git :"
+                    git --version
+
+                    echo ""
+                    echo "Maven Wrapper :"
+                    chmod +x mvnw
+                    ./mvnw -version
+                '''
+            }
+        }
+
+        stage('Clean') {
+            steps {
+                echo '======================================'
+                echo 'Nettoyage Maven'
+                echo '======================================'
+
+                sh './mvnw clean'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo '======================================'
+                echo 'Exécution des tests'
+                echo '======================================'
+
+                sh './mvnw test'
+            }
+
+            post {
+                always {
+                    echo 'Publication des rapports JUnit...'
+
+                    junit(
+                        testResults: 'target/surefire-reports/*.xml',
+                        allowEmptyResults: false
+                    )
+                }
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo '======================================'
+                echo 'Construction du JAR Spring Boot'
+                echo '======================================'
+
+                sh './mvnw package -DskipTests'
+
+                echo 'JAR généré :'
+
+                sh '''
+                    find target \
+                        -maxdepth 1 \
+                        -type f \
+                        -name "*.jar" \
+                        -not -name "*.original" \
+                        -exec ls -lh {} \\;
+                '''
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                echo '======================================'
+                echo 'Archivage du JAR dans Jenkins'
+                echo '======================================'
+
+                archiveArtifacts(
+                    artifacts: 'target/*.jar',
+                    fingerprint: true
+                )
+            }
+        }
+    }
+
+    post {
+
+        success {
+            echo '''
+            ======================================
+            BUILD TERMINÉ AVEC SUCCÈS
+            ======================================
+            '''
+        }
+
+        failure {
+            echo '''
+            ======================================
+            BUILD EN ÉCHEC
+            ======================================
+            '''
+        }
+
+        always {
+            echo 'Fin du pipeline.'
+        }
+    }
+}

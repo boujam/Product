@@ -1,0 +1,1121 @@
+/* =========================================================
+RESET
+========================================================= */
+
+    {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+/* =========================================================
+BODY
+========================================================= */
+
+body {
+font-family:
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Helvetica,
+Arial,
+sans-serif;
+
+background:
+    linear-gradient(
+        135deg,
+        #eef2ff 0%,
+        #f8fafc 50%,
+        #e0f2fe 100%
+    );
+
+color: #1e293b;
+
+min-height: 100vh;
+
+padding: 40px 20px;
+
+}
+
+/* =========================================================
+CONTAINER
+========================================================= */
+
+.container {
+width: 100%;
+max-width: 1200px;
+
+margin: 0 auto;
+
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+header {
+text-align: center;
+
+margin-bottom: 40px;
+
+}
+
+header h1 {
+font-size: 2.5rem;
+
+font-weight: 800;
+
+color: #0f172a;
+
+margin-bottom: 10px;
+
+}
+
+.subtitle {
+font-size: 1.05rem;
+
+color: #64748b;
+
+}
+
+/* =========================================================
+TITRES DES SECTIONS
+========================================================= */
+
+section h2 {
+color: #0f172a;
+
+font-size: 1.6rem;
+
+margin-bottom: 10px;
+
+}
+
+.section-description {
+color: #64748b;
+
+margin-bottom: 25px;
+
+}
+
+/* =========================================================
+SECTION CHOIX DU PRODUIT
+========================================================= */
+
+.product-selection {
+background: #ffffff;
+
+border-radius: 20px;
+
+padding: 35px;
+
+box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+
+margin-bottom: 25px;
+
+}
+
+.product-selection h2 {
+text-align: center;
+
+margin-bottom: 30px;
+
+}
+
+/* =========================================================
+TYPES DE PRODUITS
+========================================================= */
+
+.product-types {
+display: grid;
+
+grid-template-columns:
+    repeat(3, 1fr);
+
+gap: 20px;
+
+}
+
+/* =========================================================
+BOUTON TYPE DE PRODUIT
+========================================================= */
+
+.product-type {
+border: 2px solid #e2e8f0;
+
+background: #ffffff;
+
+border-radius: 16px;
+
+padding: 30px 20px;
+
+cursor: pointer;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+justify-content: center;
+
+min-height: 190px;
+
+transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+}
+
+.product-type:hover {
+transform: translateY(-5px);
+
+border-color: #6366f1;
+
+box-shadow:
+    0 12px 25px rgba(99, 102, 241, 0.15);
+
+}
+
+.product-type.active {
+border-color: #4f46e5;
+
+background:
+    linear-gradient(
+        135deg,
+        #eef2ff,
+        #ffffff
+    );
+
+box-shadow:
+    0 10px 25px rgba(79, 70, 229, 0.18);
+
+transform: translateY(-3px);
+
+}
+
+/* =========================================================
+ICÔNE PRODUIT
+========================================================= */
+
+.product-icon {
+font-size: 3rem;
+
+margin-bottom: 15px;
+
+}
+
+/* =========================================================
+NOM PRODUIT
+========================================================= */
+
+.product-name {
+font-size: 1.25rem;
+
+font-weight: 700;
+
+color: #0f172a;
+
+margin-bottom: 8px;
+
+}
+
+/* =========================================================
+DESCRIPTION PRODUIT
+========================================================= */
+
+.product-description {
+font-size: 0.9rem;
+
+color: #64748b;
+
+text-align: center;
+
+}
+
+/* =========================================================
+PRODUIT SÉLECTIONNÉ
+========================================================= */
+
+.selected-product {
+background: #ffffff;
+
+border-radius: 15px;
+
+padding: 18px 25px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+gap: 20px;
+
+box-shadow:
+    0 5px 20px rgba(15, 23, 42, 0.07);
+
+margin-bottom: 25px;
+
+border-left:
+    5px solid #4f46e5;
+
+}
+
+.selected-product-info {
+display: flex;
+
+align-items: center;
+
+gap: 10px;
+
+font-size: 0.95rem;
+
+}
+
+.selected-product-info span {
+color: #64748b;
+}
+
+.selected-product-info strong {
+color: #4f46e5;
+
+text-transform: capitalize;
+
+}
+
+/* =========================================================
+BOUTON CHANGER DE PRODUIT
+========================================================= */
+
+.change-product-button {
+border: none;
+
+background: #f1f5f9;
+
+color: #475569;
+
+padding: 10px 16px;
+
+border-radius: 9px;
+
+cursor: pointer;
+
+font-weight: 600;
+
+transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+}
+
+.change-product-button:hover {
+background: #e2e8f0;
+
+color: #0f172a;
+
+}
+
+/* =========================================================
+SECTION CRUD
+========================================================= */
+
+.crud-section {
+background: #ffffff;
+
+border-radius: 20px;
+
+padding: 35px;
+
+box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+
+margin-bottom: 25px;
+
+}
+
+.crud-section h2 {
+text-align: center;
+}
+
+/* =========================================================
+BOUTONS CRUD
+========================================================= */
+
+.crud-buttons {
+display: grid;
+
+grid-template-columns:
+    repeat(4, 1fr);
+
+gap: 15px;
+
+margin-top: 30px;
+
+}
+
+.crud-button {
+border: 2px solid #e2e8f0;
+
+background: #ffffff;
+
+border-radius: 14px;
+
+padding: 25px 15px;
+
+cursor: pointer;
+
+display: flex;
+
+flex-direction: column;
+
+align-items: center;
+
+gap: 8px;
+
+transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.crud-button:hover {
+transform: translateY(-4px);
+
+box-shadow:
+    0 10px 20px rgba(15, 23, 42, 0.08);
+
+}
+
+.crud-button.active {
+color: #ffffff;
+}
+
+/* =========================================================
+ICÔNES CRUD
+========================================================= */
+
+.crud-icon {
+font-size: 2rem;
+
+margin-bottom: 5px;
+
+}
+
+.crud-name {
+font-size: 1.1rem;
+
+font-weight: 700;
+
+}
+
+.crud-description {
+font-size: 0.8rem;
+
+color: #64748b;
+
+text-align: center;
+
+}
+
+.crud-button.active
+.crud-description {
+color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================================================
+CREATE
+========================================================= */
+
+.create-button:hover {
+border-color: #16a34a;
+}
+
+.create-button.active {
+background: #16a34a;
+
+border-color: #16a34a;
+
+box-shadow:
+    0 10px 20px rgba(22, 163, 74, 0.25);
+
+}
+
+/* =========================================================
+READ
+========================================================= */
+
+.read-button:hover {
+border-color: #2563eb;
+}
+
+.read-button.active {
+background: #2563eb;
+
+border-color: #2563eb;
+
+box-shadow:
+    0 10px 20px rgba(37, 99, 235, 0.25);
+
+}
+
+/* =========================================================
+UPDATE
+========================================================= */
+
+.update-button:hover {
+border-color: #d97706;
+}
+
+.update-button.active {
+background: #d97706;
+
+border-color: #d97706;
+
+box-shadow:
+    0 10px 20px rgba(217, 119, 6, 0.25);
+
+}
+
+/* =========================================================
+DELETE
+========================================================= */
+
+.delete-button:hover {
+border-color: #dc2626;
+}
+
+.delete-button.active {
+background: #dc2626;
+
+border-color: #dc2626;
+
+box-shadow:
+    0 10px 20px rgba(220, 38, 38, 0.25);
+
+}
+
+/* =========================================================
+PANNEAU OPÉRATION
+========================================================= */
+
+.operation-panel {
+background: #ffffff;
+
+border-radius: 20px;
+
+padding: 35px;
+
+box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+
+margin-bottom: 25px;
+
+}
+
+/* =========================================================
+HEADER OPÉRATION
+========================================================= */
+
+.operation-header {
+margin-bottom: 30px;
+
+border-bottom:
+    1px solid #e2e8f0;
+
+padding-bottom: 20px;
+
+}
+
+.operation-header h2 {
+margin-bottom: 8px;
+}
+
+.operation-header p {
+color: #64748b;
+}
+
+/* =========================================================
+FORMULAIRE
+========================================================= */
+
+.product-form {
+display: grid;
+
+grid-template-columns:
+    repeat(2, 1fr);
+
+gap: 20px;
+
+}
+
+.form-group {
+display: flex;
+
+flex-direction: column;
+
+gap: 8px;
+
+}
+
+.form-group.full-width {
+grid-column:
+1 / -1;
+}
+
+.form-group label {
+font-weight: 600;
+
+color: #334155;
+
+font-size: 0.95rem;
+
+}
+
+/* =========================================================
+INPUTS
+========================================================= */
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+width: 100%;
+
+padding: 13px 14px;
+
+border:
+    1px solid #cbd5e1;
+
+border-radius: 9px;
+
+background: #ffffff;
+
+color: #0f172a;
+
+font-family: inherit;
+
+font-size: 0.95rem;
+
+outline: none;
+
+transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+border-color: #6366f1;
+
+box-shadow:
+    0 0 0 3px
+    rgba(99, 102, 241, 0.12);
+
+}
+
+.form-group textarea {
+min-height: 120px;
+
+resize: vertical;
+
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+color: #94a3b8;
+}
+
+/* =========================================================
+ACTIONS FORMULAIRE
+========================================================= */
+
+.form-actions {
+grid-column:
+1 / -1;
+
+display: flex;
+
+justify-content: flex-end;
+
+gap: 12px;
+
+margin-top: 10px;
+
+}
+
+/* =========================================================
+BOUTONS D'ACTION
+========================================================= */
+
+.action-button {
+border: none;
+
+border-radius: 9px;
+
+padding: 12px 20px;
+
+font-size: 0.95rem;
+
+font-weight: 700;
+
+cursor: pointer;
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+}
+
+.action-button:hover {
+transform: translateY(-2px);
+}
+
+.create-action {
+background: #16a34a;
+
+color: #ffffff;
+
+}
+
+.create-action:hover {
+background: #15803d;
+
+box-shadow:
+    0 6px 15px rgba(22, 163, 74, 0.25);
+
+}
+
+.read-action {
+background: #2563eb;
+
+color: #ffffff;
+
+}
+
+.read-action:hover {
+background: #1d4ed8;
+
+box-shadow:
+    0 6px 15px rgba(37, 99, 235, 0.25);
+
+}
+
+.update-action {
+background: #d97706;
+
+color: #ffffff;
+
+}
+
+.update-action:hover {
+background: #b45309;
+
+box-shadow:
+    0 6px 15px rgba(217, 119, 6, 0.25);
+
+}
+
+.delete-action {
+background: #dc2626;
+
+color: #ffffff;
+
+}
+
+.delete-action:hover {
+background: #b91c1c;
+
+box-shadow:
+    0 6px 15px rgba(220, 38, 38, 0.25);
+
+}
+
+.load-button {
+background: #475569;
+
+color: #ffffff;
+
+}
+
+.load-button:hover {
+background: #334155;
+
+box-shadow:
+    0 6px 15px rgba(71, 85, 105, 0.25);
+
+}
+
+/* =========================================================
+FORMULAIRE READ
+========================================================= */
+
+#read-one-form {
+max-width: 600px;
+
+margin: 0 auto;
+
+}
+
+#read-one-form .action-button {
+width: 100%;
+}
+
+#read-all-button {
+display: block;
+
+margin: 0 auto;
+
+}
+
+/* =========================================================
+WARNING
+========================================================= */
+
+.warning {
+background: #fef2f2;
+
+color: #991b1b;
+
+border:
+    1px solid #fecaca;
+
+border-radius: 9px;
+
+padding: 14px 16px;
+
+margin-bottom: 20px;
+
+font-weight: 600;
+
+}
+
+/* =========================================================
+RESULTAT
+========================================================= */
+
+.result-panel {
+background: #ffffff;
+
+border-radius: 20px;
+
+padding: 35px;
+
+box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+
+margin-bottom: 25px;
+
+}
+
+.result-panel h2 {
+margin-bottom: 20px;
+}
+
+/* =========================================================
+MESSAGES
+========================================================= */
+
+.message {
+padding: 14px 16px;
+
+border-radius: 9px;
+
+margin-bottom: 20px;
+
+font-weight: 600;
+
+}
+
+.message.success {
+background: #f0fdf4;
+
+color: #166534;
+
+border:
+    1px solid #bbf7d0;
+
+}
+
+.message.error {
+background: #fef2f2;
+
+color: #991b1b;
+
+border:
+    1px solid #fecaca;
+
+}
+
+.message.info {
+background: #eff6ff;
+
+color: #1e40af;
+
+border:
+    1px solid #bfdbfe;
+
+}
+
+/* =========================================================
+CARTE PRODUIT
+========================================================= */
+
+.product-card {
+display: grid;
+
+grid-template-columns:
+    repeat(2, 1fr);
+
+gap: 1px;
+
+background: #e2e8f0;
+
+border:
+    1px solid #e2e8f0;
+
+border-radius: 12px;
+
+overflow: hidden;
+
+}
+
+.product-field {
+background: #ffffff;
+
+padding: 18px;
+
+display: flex;
+
+flex-direction: column;
+
+gap: 6px;
+
+}
+
+.product-field span {
+color: #64748b;
+
+font-size: 0.85rem;
+
+font-weight: 600;
+
+text-transform: uppercase;
+
+letter-spacing: 0.03em;
+
+}
+
+.product-field strong {
+color: #0f172a;
+
+font-size: 1rem;
+
+font-weight: 600;
+
+word-break: break-word;
+
+}
+
+.description-field {
+grid-column:
+1 / -1;
+}
+
+/* =========================================================
+TABLEAU
+========================================================= */
+
+.table-container {
+width: 100%;
+
+overflow-x: auto;
+
+border:
+    1px solid #e2e8f0;
+
+border-radius: 12px;
+
+}
+
+table {
+width: 100%;
+
+border-collapse: collapse;
+
+min-width: 700px;
+
+}
+
+thead {
+background: #f8fafc;
+}
+
+th {
+color: #334155;
+
+font-size: 0.85rem;
+
+text-transform: uppercase;
+
+letter-spacing: 0.03em;
+
+font-weight: 700;
+
+text-align: left;
+
+padding: 15px;
+
+border-bottom:
+    1px solid #e2e8f0;
+
+}
+
+td {
+padding: 15px;
+
+color: #475569;
+
+border-bottom:
+    1px solid #e2e8f0;
+
+vertical-align: top;
+
+}
+
+tbody tr:last-child td {
+border-bottom: none;
+}
+
+tbody tr:hover {
+background: #f8fafc;
+}
+
+/* =========================================================
+HIDDEN
+========================================================= */
+
+.hidden {
+display: none !important;
+}
+
+/* =========================================================
+RESPONSIVE - TABLETTE
+========================================================= */
+
+@media (max-width: 900px) {
+
+.crud-buttons {
+    grid-template-columns:
+        repeat(2, 1fr);
+}
+
+.product-types {
+    grid-template-columns:
+        1fr;
+}
+
+}
+
+/* =========================================================
+RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+body {
+    padding: 20px 12px;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+.product-selection,
+.crud-section,
+.operation-panel,
+.result-panel {
+    padding: 22px;
+}
+
+.crud-buttons {
+    grid-template-columns: 1fr;
+}
+
+.product-form {
+    grid-template-columns: 1fr;
+}
+
+.form-group.full-width {
+    grid-column: auto;
+}
+
+.form-actions {
+    grid-column: auto;
+
+    flex-direction: column;
+}
+
+.form-actions .action-button {
+    width: 100%;
+}
+
+.selected-product {
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+.selected-product-info {
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.change-product-button {
+    width: 100%;
+}
+
+.product-card {
+    grid-template-columns: 1fr;
+}
+
+.description-field {
+    grid-column: auto;
+}
+
+}
+
+/* =========================================================
+PETITS ECRANS
+========================================================= */
+
+@media (max-width: 400px) {
+
+.product-selection,
+.crud-section,
+.operation-panel,
+.result-panel {
+    padding: 18px;
+}
+
+header h1 {
+    font-size: 1.7rem;
+}
+
+.product-icon {
+    font-size: 2.5rem;
+}
+
+.crud-icon {
+    font-size: 1.7rem;
+}
+
+}

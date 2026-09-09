@@ -48,6 +48,7 @@ pipeline {
 
         // Pas de tests actuellement dans le projet
         // La phase Test sera ajoutée lorsque les tests seront disponibles.
+
         /* stage('Test') {
             steps {
                 echo '======================================'
@@ -102,6 +103,39 @@ pipeline {
                 )
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                echo '======================================'
+                echo 'Construction de l''image Docker'
+                echo '======================================'
+
+                sh '''
+                    docker build -t mon-service:latest .
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo '======================================'
+                echo 'Déploiement du service'
+                echo '======================================'
+
+                sh '''
+                    docker stop mon-service || true
+                    docker rm mon-service || true
+                    
+                    // application accessible depuis http://192.168.128.103:8081
+                    docker run -d \
+                        --name mon-service \
+                        --restart unless-stopped \
+                        -p 8081:8080 \
+                        mon-service:latest
+                '''
+            }
+        }
+
     }
 
     post {

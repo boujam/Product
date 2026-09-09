@@ -46,6 +46,8 @@ pipeline {
             }
         }
 
+        // Pas de tests actuellement dans le projet
+        // La phase Test sera ajoutée lorsque les tests seront disponibles.
         /* stage('Test') {
             steps {
                 echo '======================================'

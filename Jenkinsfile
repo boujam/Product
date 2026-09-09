@@ -126,7 +126,7 @@ pipeline {
                     docker stop mon-service || true
                     docker rm mon-service || true
                     
-                    // application accessible depuis http://192.168.128.103:8081
+                    # Application accessible depuis http://192.168.128.103:8081
                     docker run -d \
                         --name mon-service \
                         --restart unless-stopped \

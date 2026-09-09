@@ -107,7 +107,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo '======================================'
-                echo 'Construction de l''image Docker'
+                echo "Construction de l'image Docker"
                 echo '======================================'
 
                 sh '''

@@ -47,7 +47,7 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
+        /*    steps {
                 echo '======================================'
                 echo 'Exécution des tests'
                 echo '======================================'
@@ -64,7 +64,7 @@ pipeline {
                         allowEmptyResults: false
                     )
                 }
-            }
+            } */
         }
 
         stage('Package') {

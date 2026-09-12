@@ -68,6 +68,114 @@ git push -u origin main
 
 
 
+FIGER LE CODE
+
+master@MS7C56:/media/master/DATASSD/developpement/github/ollama-vscode$ git status
+Sur la branche main
+Votre branche est à jour avec 'origin/main'.
+
+Modifications qui ne seront pas validées :
+  (utilisez "git add <fichier>..." pour mettre à jour ce qui sera validé)
+  (utilisez "git restore <fichier>..." pour annuler les modifications dans le répertoire de travail)
+        modifié :         package-lock.json
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+master@MS7C56:/media/master/DATASSD/developpement/github/ollama-vscode$ git rev-parse HEAD
+56ea9f3cfced1c390d9777cc77f0418ba4237bb7
+master@MS7C56:/media/master/DATASSD/developpement/github/ollama-vscode$ sha256sum ollama.vsix
+66a4f749d37f3a766141ac20a5af73e766f0f616733db9c4bc69b8daa646486d  ollama.vsix
+
+
+
+
+ia
+
+bash : 
+ollama list 2>/dev/null
+
+result :
+codeqwen:latest    df352abf55b1    4.2 GB    3 months ago    
+qwen3.5:latest     6488c96fa5fa    6.6 GB    3 months ago    
+gemma4:latest      c6eb396dbd59    9.6 GB    3 months ago  
+
+api : 
+http://localhost:11434/api/tags
+
+response :
+{
+  "models": [
+    {
+      "name": "codeqwen:latest",
+      "model": "codeqwen:latest",
+      "modified_at": "2026-06-08T00:25:31.781414921+02:00",
+      "size": 4179438533,
+      "digest": "df352abf55b115af149186bbe66af38888ece52bc3121324fedd96f6ded54f01",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.3B",
+        "quantization_level": "Q4_0",
+        "context_length": 65536,
+        "embedding_length": 4096
+      },
+      "capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "qwen3.5:latest",
+      "model": "qwen3.5:latest",
+      "modified_at": "2026-06-07T16:49:00.234169655+02:00",
+      "size": 6594474711,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "9.7B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 4096
+      },
+      "capabilities": [
+        "vision",
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    },
+    {
+      "name": "gemma4:latest",
+      "model": "gemma4:latest",
+      "modified_at": "2026-06-06T20:33:16.486503211+02:00",
+      "size": 9608350718,
+      "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma4",
+        "families": [
+          "gemma4"
+        ],
+        "parameter_size": "8.0B",
+        "quantization_level": "Q4_K_M"
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    }
+  ]
+}
+
 
 */
 }

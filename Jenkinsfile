@@ -127,6 +127,8 @@ pipeline {
                     docker rm mon-service || true
                     
                     # Application accessible depuis http://192.168.128.103:8081
+                    # Le port Docker:8081 est redirigé vers le port d'entrée de l'app Spring Boot:8080
+
                     docker run -d \
                         --name mon-service \
                         --restart unless-stopped \

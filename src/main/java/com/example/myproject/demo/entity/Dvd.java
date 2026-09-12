@@ -19,4 +19,9 @@ public class Dvd extends Product {
     private Integer duration;
 
     private Integer releaseYear;
+
+    @Override 
+    public String getType() {
+        return "dvd";
+    }
 }

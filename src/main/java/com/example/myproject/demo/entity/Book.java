@@ -20,4 +20,10 @@ public class Book extends Product {
     private String author;
     private String publisher;
     private Integer numberOfPages;
+
+
+    @Override 
+    public String getType() {
+        return "book";
+    }
 }

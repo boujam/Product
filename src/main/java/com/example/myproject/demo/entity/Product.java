@@ -9,7 +9,6 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Transient;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,24 +33,10 @@ public class Product {
     private BigDecimal price;
 
     private String description;
-
     
-    @Transient
     public String getType() {
-
-        if (this instanceof Book) {
-            return "book";
-        }
-
-        if (this instanceof VideoGame) {
-            return "video-game";
-        }
-
-        if (this instanceof Dvd) {
-            return "dvd";
-        }
-
         return "product";
     }
+    
 
 }

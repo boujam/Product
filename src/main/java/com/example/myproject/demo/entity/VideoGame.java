@@ -21,4 +21,9 @@ public class VideoGame extends Product {
     private String genre;
 
     private String ageRating;
+
+    @Override 
+    public String getType() {
+        return "video-game";
+    }
 }

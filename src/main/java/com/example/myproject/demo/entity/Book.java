@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(callSuper = true)
 public class Book extends Product {
 
     @Column(unique = true)

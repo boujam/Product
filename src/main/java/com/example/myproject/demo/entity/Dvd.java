@@ -11,7 +11,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(callSuper = true)
+
 public class Dvd extends Product {
 
     private String director;

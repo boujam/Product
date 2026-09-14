@@ -22,11 +22,11 @@ public class DemoApplication {
     JsonSchemaService schemaService = context.getBean(JsonSchemaService.class);
 
     // Génère le schéma et crée automatiquement le fichier "VideoGame-schema.json"
-    schemaService.generateAndSaveSchema(VideoGame.class);
-    schemaService.generateAndSaveSchema(Book.class);
-    schemaService.generateAndSaveSchema(Dvd.class);
-    schemaService.generateAndSaveSchema(Product.class);
-    schemaService.generateAndSaveSchema(ProductRequest.class);
+    schemaService.generateAndSaveAllSchemas(VideoGame.class);
+    schemaService.generateAndSaveAllSchemas(Book.class);
+    schemaService.generateAndSaveAllSchemas(Dvd.class);
+    schemaService.generateAndSaveAllSchemas(Product.class);
+    schemaService.generateAndSaveAllSchemas(ProductRequest.class);
 
   }
 }

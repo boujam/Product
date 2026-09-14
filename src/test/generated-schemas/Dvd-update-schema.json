@@ -1,0 +1,29 @@
+{
+  "$schema" : "https://json-schema.org/draft/2019-09/schema",
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string"
+    },
+    "director" : {
+      "type" : "string"
+    },
+    "duration" : {
+      "type" : "integer"
+    },
+    "id" : {
+      "type" : "integer"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "price" : {
+      "type" : "number",
+      "minimum" : 0
+    },
+    "releaseYear" : {
+      "type" : "integer"
+    }
+  },
+  "required" : [ "name", "price" ]
+}

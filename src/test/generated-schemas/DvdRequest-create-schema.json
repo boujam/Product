@@ -5,11 +5,20 @@
     "description" : {
       "type" : "string"
     },
+    "director" : {
+      "type" : "string"
+    },
+    "duration" : {
+      "type" : "integer"
+    },
     "name" : {
       "type" : "string"
     },
     "price" : {
       "type" : "number"
+    },
+    "releaseYear" : {
+      "type" : "integer"
     }
   }
 }

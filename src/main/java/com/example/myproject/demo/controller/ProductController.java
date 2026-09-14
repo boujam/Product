@@ -1,5 +1,6 @@
 package com.example.myproject.demo.controller;
 
+import com.example.myproject.demo.dto.ProductRequest;
 import com.example.myproject.demo.entity.Product;
 import com.example.myproject.demo.service.ProductService;
 
@@ -92,7 +93,6 @@ public Product updateProduct(
         @RequestBody ProductRequest request) {
 
     return productService.updateProduct(
-            type,
             id,
             request
     );

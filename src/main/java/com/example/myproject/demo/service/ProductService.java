@@ -1,6 +1,9 @@
 package com.example.myproject.demo.service;
 
-import com.example.myproject.demo.controller.ProductRequest;
+import com.example.myproject.demo.dto.BookRequest;
+import com.example.myproject.demo.dto.DvdRequest;
+import com.example.myproject.demo.dto.ProductRequest;
+import com.example.myproject.demo.dto.VideoGameRequest;
 import com.example.myproject.demo.entity.Book;
 import com.example.myproject.demo.entity.Dvd;
 import com.example.myproject.demo.entity.Product;
@@ -11,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 /* 
 * LOGIQUE DU SERVICE 
@@ -24,417 +26,266 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
 
-private final ProductRepository productRepository;
+        private final ProductRepository productRepository;
 
+        public ProductService(ProductRepository productRepository) {
+                this.productRepository = productRepository;
+        }
 
-public ProductService(ProductRepository productRepository) {
-    this.productRepository = productRepository;
-}
+        // =========================================================
+        // GET ALL
+        // =========================================================
 
+        public List<Product> getAllProducts() {
 
-// =========================================================
-// GET ALL
-// =========================================================
+                return productRepository.findAll();
 
-public List<Product> getAllProducts() {
+        }
 
-    return productRepository.findAll();
+        // =========================================================
+        // GET ALL PAR TYPE
+        // =========================================================
 
-}
+        public List<Product> getProductsByType(String type) {
 
+                validateProductType(type);
 
-// =========================================================
-// GET ALL PAR TYPE
-// =========================================================
+                return productRepository.findAll()
+                                .stream()
+                                .filter(product -> product.getType().equals(type))
+                                .collect(Collectors.toList());
 
-public List<Product> getProductsByType(String type) {
+        }
 
-    validateProductType(type);
+        // =========================================================
+        // GET ONE PAR TYPE + ID
+        // =========================================================
 
-    return productRepository.findAll()
-            .stream()
-            .filter(product ->
-                    product.getType().equals(type)
-            )
-            .collect(Collectors.toList());
+        public Product getProductByTypeAndId(
+                        String type,
+                        Long id) {
 
-}
+                validateProductType(type);
 
+                Product product = productRepository
+                                .findById(id)
+                                .orElseThrow(
+                                                () -> new RuntimeException(
+                                                                "Produit introuvable avec l'id : " + id));
 
-// =========================================================
-// GET ONE PAR TYPE + ID
-// =========================================================
+                validateProductMatchesType(
+                                product,
+                                type);
 
-public Product getProductByTypeAndId(
-        String type,
-        Long id) {
+                return product;
 
-    validateProductType(type);
+        }
 
-    Product product =
-            productRepository
-                    .findById(id)
-                    .orElseThrow(
-                            () -> new RuntimeException(
-                                    "Produit introuvable avec l'id : " + id
-                            )
-                    );
+        // =========================================================
+        // CREATE
+        // =========================================================
 
-    validateProductMatchesType(
-            product,
-            type
-    );
+        public Product createProduct(ProductRequest request) {
 
-    return product;
+                if (request instanceof BookRequest bookRequest) {
 
-}
+                        Book book = new Book();
 
+                        book.setName(bookRequest.getName());
+                        book.setPrice(bookRequest.getPrice());
+                        book.setDescription(bookRequest.getDescription());
 
-// =========================================================
-// CREATE
-// =========================================================
+                        book.setIsbn(bookRequest.getIsbn());
+                        book.setAuthor(bookRequest.getAuthor());
+                        book.setPublisher(bookRequest.getPublisher());
+                        book.setNumberOfPages(bookRequest.getNumberOfPages());
 
-public Product createProduct(
-        ProductRequest request) {
+                        return productRepository.save(book);
+                }
 
-    validateProductType(
-            request.getType()
-    );
+                if (request instanceof DvdRequest dvdRequest) {
 
-    Product product =
-            createProductFromRequest(request);
+                        Dvd dvd = new Dvd();
 
-    return productRepository.save(product);
+                        dvd.setName(dvdRequest.getName());
+                        dvd.setPrice(dvdRequest.getPrice());
+                        dvd.setDescription(dvdRequest.getDescription());
 
-}
+                        dvd.setDirector(dvdRequest.getDirector());
+                        dvd.setDuration(dvdRequest.getDuration());
+                        dvd.setReleaseYear(dvdRequest.getReleaseYear());
 
+                        return productRepository.save(dvd);
+                }
 
-// =========================================================
-// CONSTRUCTION DU PRODUIT
-// =========================================================
+                if (request instanceof VideoGameRequest videoGameRequest) {
 
-private Product createProductFromRequest(
-        ProductRequest request) {
+                        VideoGame videoGame = new VideoGame();
 
-    Product product;
+                        videoGame.setName(videoGameRequest.getName());
+                        videoGame.setPrice(videoGameRequest.getPrice());
+                        videoGame.setDescription(videoGameRequest.getDescription());
 
+                        videoGame.setDeveloper(videoGameRequest.getDeveloper());
+                        videoGame.setPlatform(videoGameRequest.getPlatform());
+                        videoGame.setGenre(videoGameRequest.getGenre());
+                        videoGame.setAgeRating(videoGameRequest.getAgeRating());
 
-    switch (request.getType()) {
+                        return productRepository.save(videoGame);
+                }
 
-        // -------------------------------------------------
-        // LIVRE
-        // -------------------------------------------------
+                throw new IllegalArgumentException(
+                                "Type de produit non supporté");
+        }
 
-        case "book":
+        // =========================================================
+        // UPDATE
+        // =========================================================
+        public Product updateProduct(
+                        Long id,
+                        ProductRequest request) {
 
-            Book book = new Book();
+                Product existingProduct = productRepository.findById(id)
+                                .orElseThrow(() -> new RuntimeException(
+                                                "Produit introuvable avec l'id : " + id));
 
-            book.setIsbn(
-                    request.getIsbn()
-            );
+                // =========================================================
+                // UPDATE BOOK
+                // =========================================================
 
-            book.setAuthor(
-                    request.getAuthor()
-            );
+                if (request instanceof BookRequest bookRequest) {
 
-            book.setPublisher(
-                    request.getPublisher()
-            );
+                        if (!(existingProduct instanceof Book)) {
+                                throw new IllegalArgumentException(
+                                                "Le produit avec l'id " + id
+                                                                + " n'est pas un livre");
+                        }
 
-            book.setNumberOfPages(
-                    request.getNumberOfPages()
-            );
+                        Book book = (Book) existingProduct;
 
-            product = book;
+                        book.setName(bookRequest.getName());
+                        book.setPrice(bookRequest.getPrice());
+                        book.setDescription(bookRequest.getDescription());
 
-            break;
+                        book.setIsbn(bookRequest.getIsbn());
+                        book.setAuthor(bookRequest.getAuthor());
+                        book.setPublisher(bookRequest.getPublisher());
+                        book.setNumberOfPages(bookRequest.getNumberOfPages());
 
+                        return productRepository.save(book);
+                }
 
-        // -------------------------------------------------
-        // JEU VIDÉO
-        // -------------------------------------------------
+                // =========================================================
+                // UPDATE DVD
+                // =========================================================
 
-        case "video-game":
+                if (request instanceof DvdRequest dvdRequest) {
 
-            VideoGame videoGame =
-                    new VideoGame();
+                        if (!(existingProduct instanceof Dvd)) {
+                                throw new IllegalArgumentException(
+                                                "Le produit avec l'id " + id
+                                                                + " n'est pas un DVD");
+                        }
 
-            videoGame.setDeveloper(
-                    request.getDeveloper()
-            );
+                        Dvd dvd = (Dvd) existingProduct;
 
-            videoGame.setPlatform(
-                    request.getPlatform()
-            );
+                        dvd.setName(dvdRequest.getName());
+                        dvd.setPrice(dvdRequest.getPrice());
+                        dvd.setDescription(dvdRequest.getDescription());
 
-            videoGame.setGenre(
-                    request.getGenre()
-            );
+                        dvd.setDirector(dvdRequest.getDirector());
+                        dvd.setDuration(dvdRequest.getDuration());
+                        dvd.setReleaseYear(dvdRequest.getReleaseYear());
 
-            videoGame.setAgeRating(
-                    request.getAgeRating()
-            );
+                        return productRepository.save(dvd);
+                }
 
-            product = videoGame;
+                // =========================================================
+                // UPDATE VIDEO GAME
+                // =========================================================
 
-            break;
+                if (request instanceof VideoGameRequest videoGameRequest) {
 
+                        if (!(existingProduct instanceof VideoGame)) {
+                                throw new IllegalArgumentException(
+                                                "Le produit avec l'id " + id
+                                                                + " n'est pas un jeu vidéo");
+                        }
 
-        // -------------------------------------------------
-        // DVD
-        // -------------------------------------------------
+                        VideoGame videoGame = (VideoGame) existingProduct;
 
-        case "dvd":
+                        videoGame.setName(videoGameRequest.getName());
+                        videoGame.setPrice(videoGameRequest.getPrice());
+                        videoGame.setDescription(videoGameRequest.getDescription());
 
-            Dvd dvd = new Dvd();
+                        videoGame.setDeveloper(videoGameRequest.getDeveloper());
+                        videoGame.setPlatform(videoGameRequest.getPlatform());
+                        videoGame.setGenre(videoGameRequest.getGenre());
+                        videoGame.setAgeRating(videoGameRequest.getAgeRating());
 
-            dvd.setDirector(
-                    request.getDirector()
-            );
+                        return productRepository.save(videoGame);
+                }
 
-            dvd.setDuration(
-                    request.getDuration()
-            );
+                throw new IllegalArgumentException(
+                                "Type de produit non supporté");
+        }
 
-            dvd.setReleaseYear(
-                    request.getReleaseYear()
-            );
+        // =========================================================
+        // DELETE PAR TYPE + ID
+        // =========================================================
 
-            product = dvd;
+        public void deleteProduct(
+                        String type,
+                        Long id) {
 
-            break;
+                validateProductType(type);
 
+                Product product = getProductByTypeAndId(
+                                type,
+                                id);
 
-        default:
+                productRepository.delete(product);
 
-            throw new IllegalArgumentException(
-                    "Type de produit invalide : "
-                            + request.getType()
-            );
-    }
+        }
 
+        // =========================================================
+        // VALIDATION DU TYPE
+        // =========================================================
 
-    // -----------------------------------------------------
-    // CHAMPS COMMUNS
-    // -----------------------------------------------------
+        private void validateProductType(String type) {
 
-    product.setName(
-            request.getName()
-    );
+                if (!"book".equals(type) &&
+                                !"video-game".equals(type) &&
+                                !"dvd".equals(type)) {
 
-    product.setPrice(
-            request.getPrice()
-    );
+                        throw new IllegalArgumentException(
+                                        "Type de produit invalide : " + type);
 
-    product.setDescription(
-            request.getDescription()
-    );
+                }
 
+        }
 
-    return product;
+        // =========================================================
+        // VALIDATION TYPE + PRODUIT
+        // =========================================================
 
-}
+        private void validateProductMatchesType(
+                        Product product,
+                        String type) {
 
+                if (!product.getType().equals(type)) {
 
-// =========================================================
-// UPDATE PAR TYPE + ID
-// =========================================================
+                        throw new IllegalArgumentException(
+                                        "L'identifiant " +
+                                                        product.getId() +
+                                                        " correspond à un " +
+                                                        product.getType() +
+                                                        " et non à un " +
+                                                        type +
+                                                        ".");
 
-public Product updateProduct(
-        String type,
-        Long id,
-        ProductRequest request) {
+                }
 
-    validateProductType(type);
-
-    Product existingProduct =
-            getProductByTypeAndId(
-                    type,
-                    id
-            );
-
-
-    // -----------------------------------------------------
-    // VÉRIFICATION DU TYPE DU BODY
-    // -----------------------------------------------------
-
-    if (
-            request.getType() != null &&
-            !type.equals(request.getType())
-    ) {
-
-        throw new IllegalArgumentException(
-                "Le type demandé dans l'URL (" +
-                        type +
-                        ") ne correspond pas au type envoyé (" +
-                        request.getType() +
-                        ")."
-        );
-
-    }
-
-
-    // -----------------------------------------------------
-    // CHAMPS COMMUNS
-    // -----------------------------------------------------
-
-    existingProduct.setName(
-            request.getName()
-    );
-
-    existingProduct.setPrice(
-            request.getPrice()
-    );
-
-    existingProduct.setDescription(
-            request.getDescription()
-    );
-
-
-    // -----------------------------------------------------
-    // LIVRE
-    // -----------------------------------------------------
-
-    if (existingProduct instanceof Book book) {
-
-        book.setIsbn(
-                request.getIsbn()
-        );
-
-        book.setAuthor(
-                request.getAuthor()
-        );
-
-        book.setPublisher(
-                request.getPublisher()
-        );
-
-        book.setNumberOfPages(
-                request.getNumberOfPages()
-        );
-
-    }
-
-
-    // -----------------------------------------------------
-    // JEU VIDÉO
-    // -----------------------------------------------------
-
-    if (existingProduct instanceof VideoGame videoGame) {
-
-        videoGame.setDeveloper(
-                request.getDeveloper()
-        );
-
-        videoGame.setPlatform(
-                request.getPlatform()
-        );
-
-        videoGame.setGenre(
-                request.getGenre()
-        );
-
-        videoGame.setAgeRating(
-                request.getAgeRating()
-        );
-
-    }
-
-
-    // -----------------------------------------------------
-    // DVD
-    // -----------------------------------------------------
-
-    if (existingProduct instanceof Dvd dvd) {
-
-        dvd.setDirector(
-                request.getDirector()
-        );
-
-        dvd.setDuration(
-                request.getDuration()
-        );
-
-        dvd.setReleaseYear(
-                request.getReleaseYear()
-        );
-
-    }
-
-
-    return productRepository.save(
-            existingProduct
-    );
-
-}
-
-
-// =========================================================
-// DELETE PAR TYPE + ID
-// =========================================================
-
-public void deleteProduct(
-        String type,
-        Long id) {
-
-    validateProductType(type);
-
-    Product product =
-            getProductByTypeAndId(
-                    type,
-                    id
-            );
-
-    productRepository.delete(product);
-
-}
-
-
-// =========================================================
-// VALIDATION DU TYPE
-// =========================================================
-
-private void validateProductType(String type) {
-
-    if (
-            !"book".equals(type) &&
-            !"video-game".equals(type) &&
-            !"dvd".equals(type)
-    ) {
-
-        throw new IllegalArgumentException(
-                "Type de produit invalide : " + type
-        );
-
-    }
-
-}
-
-
-// =========================================================
-// VALIDATION TYPE + PRODUIT
-// =========================================================
-
-private void validateProductMatchesType(
-        Product product,
-        String type) {
-
-    if (
-            !product.getType().equals(type)
-    ) {
-
-        throw new IllegalArgumentException(
-                "L'identifiant " +
-                        product.getId() +
-                        " correspond à un " +
-                        product.getType() +
-                        " et non à un " +
-                        type +
-                        "."
-        );
-
-    }
-
-}
+        }
 
 }

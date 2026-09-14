@@ -2,50 +2,14 @@
   "$schema" : "https://json-schema.org/draft/2019-09/schema",
   "type" : "object",
   "properties" : {
-    "ageRating" : {
-      "type" : "string"
-    },
-    "author" : {
-      "type" : "string"
-    },
     "description" : {
-      "type" : "string"
-    },
-    "developer" : {
-      "type" : "string"
-    },
-    "director" : {
-      "type" : "string"
-    },
-    "duration" : {
-      "type" : "integer"
-    },
-    "genre" : {
-      "type" : "string"
-    },
-    "isbn" : {
       "type" : "string"
     },
     "name" : {
       "type" : "string"
     },
-    "numberOfPages" : {
-      "type" : "integer"
-    },
-    "platform" : {
-      "type" : "string"
-    },
     "price" : {
       "type" : "number"
-    },
-    "publisher" : {
-      "type" : "string"
-    },
-    "releaseYear" : {
-      "type" : "integer"
-    },
-    "type" : {
-      "type" : "string"
     }
   }
 }

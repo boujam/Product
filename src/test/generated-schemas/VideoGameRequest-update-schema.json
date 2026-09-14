@@ -2,10 +2,22 @@
   "$schema" : "https://json-schema.org/draft/2019-09/schema",
   "type" : "object",
   "properties" : {
+    "ageRating" : {
+      "type" : "string"
+    },
     "description" : {
       "type" : "string"
     },
+    "developer" : {
+      "type" : "string"
+    },
+    "genre" : {
+      "type" : "string"
+    },
     "name" : {
+      "type" : "string"
+    },
+    "platform" : {
       "type" : "string"
     },
     "price" : {

@@ -81,6 +81,11 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>13.4.0.jre11</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.victools</groupId>
+            <artifactId>jsonschema-generator</artifactId>
+            <version>4.37.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

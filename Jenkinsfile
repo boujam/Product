@@ -49,7 +49,7 @@ pipeline {
         // Pas de tests actuellement dans le projet
         // La phase Test sera ajoutée lorsque les tests seront disponibles.
 
-        /* stage('Test') {
+        stage('Test') {
             steps {
                 echo '======================================'
                 echo 'Exécution des tests'
@@ -68,7 +68,7 @@ pipeline {
                     )
                 }
             } 
-        } */
+        }
 
         stage('Package') {
             steps {

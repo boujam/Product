@@ -90,7 +90,7 @@ class BookEqualsHashCodeTest {
         assertEquals(book1.hashCode(), book2.hashCode());
     }
 
-    /* 
+     
     @Test
     void twoNewBooksShouldNotBeEqual() {
 
@@ -99,7 +99,7 @@ class BookEqualsHashCodeTest {
 
         assertNotEquals(book1, book2);
     }
-    */
+    
 
     @Test
     void booksWithSameIdShouldBeEqual() {

@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.validation.constraints.Min;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
@@ -30,6 +31,7 @@ public abstract class Product {
     private String name;
 
     @Column(nullable = false, precision = 10, scale = 2)
+    @Min(0) // <-- Règle de gestion : Prix minimum de 0
     private BigDecimal price;
 
     private String description;

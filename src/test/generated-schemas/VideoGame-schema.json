@@ -14,9 +14,6 @@
     "genre" : {
       "type" : "string"
     },
-    "id" : {
-      "type" : "integer"
-    },
     "name" : {
       "type" : "string"
     },
@@ -24,7 +21,9 @@
       "type" : "string"
     },
     "price" : {
-      "type" : "number"
+      "type" : "number",
+      "minimum" : 0
     }
-  }
+  },
+  "required" : [ "name", "price" ]
 }

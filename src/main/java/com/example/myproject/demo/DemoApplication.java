@@ -2,29 +2,34 @@ package com.example.myproject.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import com.example.myproject.demo.controller.ProductRequest;
 import com.example.myproject.demo.entity.Book;
 import com.example.myproject.demo.entity.Dvd;
 import com.example.myproject.demo.entity.VideoGame;
+import com.example.myproject.demo.entity.Product;
 import com.example.myproject.demo.service.JsonSchemaService;
-
 
 @SpringBootApplication
 public class DemoApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(DemoApplication.class, args);
+    // SpringApplication.run(DemoApplication.class, args);
 
-    JsonSchemaService schemaService = new JsonSchemaService();
+    ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+
+    JsonSchemaService schemaService = context.getBean(JsonSchemaService.class);
 
     // Génère le schéma et crée automatiquement le fichier "VideoGame-schema.json"
     schemaService.generateAndSaveSchema(VideoGame.class);
     schemaService.generateAndSaveSchema(Book.class);
     schemaService.generateAndSaveSchema(Dvd.class);
+    schemaService.generateAndSaveSchema(Product.class);
     schemaService.generateAndSaveSchema(ProductRequest.class);
-  } // <-- Accolade fermante de la méthode main rétablie
-} // <-- Accolade fermante de la classe DemoApplication rétablie
+
+  }
+}
 
 /*
  * config

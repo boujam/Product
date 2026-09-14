@@ -11,17 +11,16 @@
     "duration" : {
       "type" : "integer"
     },
-    "id" : {
-      "type" : "integer"
-    },
     "name" : {
       "type" : "string"
     },
     "price" : {
-      "type" : "number"
+      "type" : "number",
+      "minimum" : 0
     },
     "releaseYear" : {
       "type" : "integer"
     }
-  }
+  },
+  "required" : [ "name", "price" ]
 }

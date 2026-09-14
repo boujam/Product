@@ -8,9 +8,6 @@
     "description" : {
       "type" : "string"
     },
-    "id" : {
-      "type" : "integer"
-    },
     "isbn" : {
       "type" : "string"
     },
@@ -21,10 +18,12 @@
       "type" : "integer"
     },
     "price" : {
-      "type" : "number"
+      "type" : "number",
+      "minimum" : 0
     },
     "publisher" : {
       "type" : "string"
     }
-  }
+  },
+  "required" : [ "name", "price" ]
 }

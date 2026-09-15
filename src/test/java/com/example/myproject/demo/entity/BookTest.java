@@ -51,7 +51,7 @@ class BookTest {
 
         Book book = new Book();
 
-        assertEquals("book", book.getType());
+        assertEquals("book", book.getProductType());
     }
 
     @Test

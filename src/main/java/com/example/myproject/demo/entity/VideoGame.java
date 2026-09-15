@@ -67,8 +67,9 @@ public class VideoGame extends Product {
         return true;
     }
 
-    @Override 
-    public String getType() {
-        return "video-game";
+    @Override
+    public String getProductType() {
+        productType = "video-game";
+        return productType;
     }
 }

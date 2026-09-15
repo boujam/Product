@@ -67,7 +67,8 @@ public class Book extends Product {
     }
 
     @Override
-    public String getType() {
-        return "book";
+    public String getProductType() {
+        productType = "book";
+        return productType;
     }
 }

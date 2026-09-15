@@ -35,8 +35,9 @@ public class DemoApplication {
     schemaService.generateAndSaveAllSchemas(BookRequest.class);
     schemaService.generateAndSaveAllSchemas(VideoGameRequest.class);
     schemaService.generateAndSaveAllSchemas(DvdRequest.class);
-    
+
   }
+  
 }
 
 /*

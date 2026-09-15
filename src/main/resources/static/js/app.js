@@ -1501,7 +1501,7 @@ function buildProductFromForm(prefix) {
          * et reste compatible avec le backend.
          */
 
-        type:
+        productType:
             selectedProductType,
 
         name:

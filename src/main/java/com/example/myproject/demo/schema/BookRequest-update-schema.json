@@ -1,0 +1,30 @@
+{
+  "$schema" : "https://json-schema.org/draft/2019-09/schema",
+  "type" : "object",
+  "properties" : {
+    "author" : {
+      "type" : "string"
+    },
+    "description" : {
+      "type" : "string"
+    },
+    "isbn" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "numberOfPages" : {
+      "type" : "integer"
+    },
+    "price" : {
+      "type" : "number"
+    },
+    "productType" : {
+      "type" : "string"
+    },
+    "publisher" : {
+      "type" : "string"
+    }
+  }
+}

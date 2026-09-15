@@ -55,7 +55,7 @@ class DvdTest {
 
         Dvd dvd = new Dvd();
 
-        assertEquals("dvd", dvd.getType());
+        assertEquals("dvd", dvd.getProductType());
     }
 
     @Test

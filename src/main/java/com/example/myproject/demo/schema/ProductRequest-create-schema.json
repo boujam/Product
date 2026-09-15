@@ -1,0 +1,18 @@
+{
+  "$schema" : "https://json-schema.org/draft/2019-09/schema",
+  "type" : "object",
+  "properties" : {
+    "description" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "price" : {
+      "type" : "number"
+    },
+    "productType" : {
+      "type" : "string"
+    }
+  }
+}

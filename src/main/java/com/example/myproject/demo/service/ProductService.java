@@ -52,7 +52,7 @@ public class ProductService {
 
                 return productRepository.findAll()
                                 .stream()
-                                .filter(product -> product.getType().equals(type))
+                                .filter(product -> product.getProductType().equals(type))
                                 .collect(Collectors.toList());
 
         }
@@ -87,10 +87,15 @@ public class ProductService {
 
         public Product createProduct(ProductRequest request) {
 
+
+                System.out.println("request avant sauvegarde = " + request.toString());
+
+
                 if (request instanceof BookRequest bookRequest) {
 
                         Book book = new Book();
-
+                        
+                        book.setProductType(bookRequest.getProductType());
                         book.setName(bookRequest.getName());
                         book.setPrice(bookRequest.getPrice());
                         book.setDescription(bookRequest.getDescription());
@@ -107,6 +112,7 @@ public class ProductService {
 
                         Dvd dvd = new Dvd();
 
+                        dvd.setProductType(dvdRequest.getProductType());
                         dvd.setName(dvdRequest.getName());
                         dvd.setPrice(dvdRequest.getPrice());
                         dvd.setDescription(dvdRequest.getDescription());
@@ -122,6 +128,7 @@ public class ProductService {
 
                         VideoGame videoGame = new VideoGame();
 
+                        videoGame.setProductType(videoGameRequest.getProductType());
                         videoGame.setName(videoGameRequest.getName());
                         videoGame.setPrice(videoGameRequest.getPrice());
                         videoGame.setDescription(videoGameRequest.getDescription());
@@ -273,13 +280,13 @@ public class ProductService {
                         Product product,
                         String type) {
 
-                if (!product.getType().equals(type)) {
+                if (!product.getProductType().equals(type)) {
 
                         throw new IllegalArgumentException(
                                         "L'identifiant " +
                                                         product.getId() +
                                                         " correspond à un " +
-                                                        product.getType() +
+                                                        product.getProductType() +
                                                         " et non à un " +
                                                         type +
                                                         ".");

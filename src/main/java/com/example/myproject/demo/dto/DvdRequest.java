@@ -1,13 +1,17 @@
 package com.example.myproject.demo.dto;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString (callSuper = true)
 public class DvdRequest extends ProductRequest {
+
+    public DvdRequest() {
+        super.productType = "dvd";
+    }
 
     private String director;
 

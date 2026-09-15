@@ -91,12 +91,18 @@
         <dependency>
             <groupId>com.github.victools</groupId>
             <artifactId>jsonschema-module-jakarta-validation</artifactId>
-            <version>4.37.0</version> <!-- Alignée avec la version du générateur -->
+            <version>4.37.0</version>
+            <!-- Alignée avec la version du générateur -->
         </dependency>
         <!-- Spring Boot Starter Validation : Fournit l'API Jakarta Validation requise -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>1.5.1</version>
         </dependency>
     </dependencies>
     <build>

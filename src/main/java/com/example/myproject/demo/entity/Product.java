@@ -2,6 +2,8 @@ package com.example.myproject.demo.entity;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -35,9 +37,13 @@ public abstract class Product {
     private BigDecimal price;
 
     private String description;
+
+    protected String productType;
     
-    public String getType() {
-        return "product";
+    // @JsonIgnore // 💡 Dit à Jackson de ne PAS inclure cette méthode dans le JSON final
+    public String getProductType() {
+        productType = "product";
+        return productType;
     }
 
     @Override

@@ -61,7 +61,8 @@ public class Dvd extends Product {
     }
 
     @Override
-    public String getType() {
-        return "dvd";
+    public String getProductType() {
+        productType = "dvd";
+        return productType;
     }
 }

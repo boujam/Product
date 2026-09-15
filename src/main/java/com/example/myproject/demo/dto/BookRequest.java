@@ -1,13 +1,17 @@
 package com.example.myproject.demo.dto;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString (callSuper = true)
 public class BookRequest extends ProductRequest {
+
+    public BookRequest() {
+        super.productType = "book";
+    }
 
     private String isbn;
 

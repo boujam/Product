@@ -8,11 +8,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "type"
+        property = "productType"
 )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = BookRequest.class, name = "book"),
@@ -21,6 +22,7 @@ import lombok.Setter;
 })
 @Getter
 @Setter
+@ToString 
 @NoArgsConstructor
 public abstract class ProductRequest {
 
@@ -29,4 +31,6 @@ public abstract class ProductRequest {
     private BigDecimal price;
 
     private String description;
+
+    protected String productType;
 }

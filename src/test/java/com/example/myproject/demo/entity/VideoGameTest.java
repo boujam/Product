@@ -57,7 +57,7 @@ class VideoGameTest {
 
         VideoGame videoGame = new VideoGame();
 
-        assertEquals("video-game", videoGame.getType());
+        assertEquals("video-game", videoGame.getProductType());
     }
 
     @Test

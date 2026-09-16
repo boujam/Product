@@ -3,23 +3,48 @@ package com.example.myproject.demo.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
+import jakarta.validation.constraints.*;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString(callSuper = true)
 public class Book extends Product {
 
-    @Column(unique = true)
+    // 💡 Initialisation propre du type discriminant au constructeur
+    public Book() {
+        super();
+        this.setProductType("book");
+    }
+
+    // 💡 Sécurise l'index d'unicité SQL Server avec la validation Regex Java
+    @NotBlank
+    @Pattern(regexp = "^\\d{10,13}$")
+    @Column(unique = true, nullable = false, length = 13)
     private String isbn;
+
+    @NotBlank
+    @Column(nullable = false)
     private String author;
+
+    @NotBlank
+    @Column(nullable = false)
     private String publisher;
+
+    @NotNull
+    @Min(1)
+    @Column(nullable = false)
     private Integer numberOfPages;
+
+    @Override
+    public String getProductType() {
+        productType = "book";
+        return productType;
+    }
 
     @Override
     public int hashCode() {
@@ -66,9 +91,4 @@ public class Book extends Product {
         return true;
     }
 
-    @Override
-    public String getProductType() {
-        productType = "book";
-        return productType;
-    }
 }

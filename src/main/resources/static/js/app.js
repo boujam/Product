@@ -2506,7 +2506,7 @@ function showProductsTable(products) {
 
                 <td>
                     ${escapeHtml(
-                        product.type || "-"
+                        product.productType || "-"
                     )}
                 </td>
 

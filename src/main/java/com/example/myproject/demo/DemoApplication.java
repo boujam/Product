@@ -8,12 +8,12 @@ import com.example.myproject.demo.dto.ProductRequest;
 import com.example.myproject.demo.dto.BookRequest;
 import com.example.myproject.demo.dto.VideoGameRequest;
 import com.example.myproject.demo.dto.DvdRequest;
-
+/*
 import com.example.myproject.demo.entity.Product;
 import com.example.myproject.demo.entity.Book;
 import com.example.myproject.demo.entity.VideoGame;
 import com.example.myproject.demo.entity.Dvd;
-
+*/
 import com.example.myproject.demo.service.JsonSchemaService;
 
 @SpringBootApplication
@@ -27,15 +27,17 @@ public class DemoApplication {
     JsonSchemaService schemaService = context.getBean(JsonSchemaService.class);
 
     // Génère le schéma et crée automatiquement le fichier "VideoGame-schema.json"
+    /*
     schemaService.generateAndSaveAllSchemas(Product.class);
     schemaService.generateAndSaveAllSchemas(Book.class);
     schemaService.generateAndSaveAllSchemas(VideoGame.class);
     schemaService.generateAndSaveAllSchemas(Dvd.class);
+    */
     schemaService.generateAndSaveAllSchemas(ProductRequest.class);
     schemaService.generateAndSaveAllSchemas(BookRequest.class);
     schemaService.generateAndSaveAllSchemas(VideoGameRequest.class);
     schemaService.generateAndSaveAllSchemas(DvdRequest.class);
-
+  
   }
   
 }

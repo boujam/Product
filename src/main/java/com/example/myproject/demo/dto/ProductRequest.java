@@ -5,6 +5,10 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,11 +30,25 @@ import lombok.ToString;
 @NoArgsConstructor
 public abstract class ProductRequest {
 
-    private String name;
+        private Long id;
+    
+        @NotBlank // 💡 Requis, interdit null, les chaînes vides "" ou remplies d'espaces "   "
+        @Size(min = 1, max = 100) // 💡 Limite la taille du nom entre 1 et 100 caractères
+        private String name;
 
-    private BigDecimal price;
+        @NotNull // 💡 Le prix est obligatoire
+        @PositiveOrZero // 💡 Règle de gestion : Interdit les valeurs négatives (équivalent moderne à @Min(0))        
+        private BigDecimal price;
+        
+        @Size(max = 1000) // 💡 Limite la description à 1000 caractères maximum
+        private String description;
 
-    private String description;
-
-    protected String productType;
+        // info utile @JsonIgnore 💡 Dit à Jackson de ne PAS inclure cette méthode dans le JSON final
+        // ici n'a aucun effet sur le code car pas utilisé
+        protected String productType;
+        
 }
+
+
+
+

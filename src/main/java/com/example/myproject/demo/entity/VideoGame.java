@@ -1,27 +1,51 @@
 package com.example.myproject.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
+import jakarta.validation.constraints.*;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString(callSuper = true)
 public class VideoGame extends Product {
 
+  // 💡 Initialisation automatique du type polymorphe au constructeur
+    public VideoGame() {
+        super();
+        this.setProductType("video-game");
+    }
+
+    @NotBlank
+    @Column(nullable = false)
     private String developer;
 
+    @NotBlank
+    @Column(nullable = false)
     private String platform;
 
+    @NotBlank
+    @Column(nullable = false)
     private String genre;
 
+    @NotBlank
+    // 💡 Aligné sur la règle de validation européenne PEGI du DTO
+    @Pattern(regexp = "^PEGI (3|7|12|16|18)$")
+    @Column(nullable = false, name = "age_rating", length = 7)
     private String ageRating;
 
+
+    @Override
+    public String getProductType() {
+        productType = "video-game";
+        return productType;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -67,9 +91,4 @@ public class VideoGame extends Product {
         return true;
     }
 
-    @Override
-    public String getProductType() {
-        productType = "video-game";
-        return productType;
-    }
 }

@@ -3,28 +3,41 @@
   "type" : "object",
   "properties" : {
     "ageRating" : {
-      "type" : "string"
+      "type" : "string",
+      "minLength" : 1,
+      "pattern" : "^PEGI (3|7|12|16|18)$"
     },
     "description" : {
-      "type" : "string"
+      "type" : "string",
+      "maxLength" : 1000
     },
     "developer" : {
-      "type" : "string"
+      "type" : "string",
+      "minLength" : 1
     },
     "genre" : {
-      "type" : "string"
+      "type" : "string",
+      "minLength" : 1
+    },
+    "id" : {
+      "type" : "integer"
     },
     "name" : {
-      "type" : "string"
+      "type" : "string",
+      "minLength" : 1,
+      "maxLength" : 100
     },
     "platform" : {
-      "type" : "string"
+      "type" : "string",
+      "minLength" : 1
     },
     "price" : {
-      "type" : "number"
+      "type" : "number",
+      "minimum" : 0
     },
     "productType" : {
       "type" : "string"
     }
-  }
+  },
+  "required" : [ "ageRating", "developer", "genre", "id", "name", "platform", "price" ]
 }

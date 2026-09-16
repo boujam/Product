@@ -1,25 +1,47 @@
 package com.example.myproject.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
+import jakarta.validation.constraints.*;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString(callSuper = true)
 
 public class Dvd extends Product {
 
+    // 💡 Initialisation automatique du type polymorphe au constructeur
+    public Dvd() {
+        super();
+        this.setProductType("dvd");
+    }
+
+    @NotBlank
+    @Column(nullable = false)
     private String director;
 
+    @NotNull
+    @Min(1)
+    @Max(600) // Limite de 10 heures
+    @Column(nullable = false)
     private Integer duration;
 
+    @NotNull
+    @Min(1888) // Année du premier film
+    @Column(nullable = false, name = "release_year")
     private Integer releaseYear;
+
+    @Override
+    public String getProductType() {
+        productType = "dvd";
+        return productType;
+    }
 
     @Override
     public int hashCode() {
@@ -60,9 +82,4 @@ public class Dvd extends Product {
         return true;
     }
 
-    @Override
-    public String getProductType() {
-        productType = "dvd";
-        return productType;
-    }
 }

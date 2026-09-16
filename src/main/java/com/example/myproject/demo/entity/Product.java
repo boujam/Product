@@ -2,16 +2,15 @@ package com.example.myproject.demo.entity;
 
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import jakarta.validation.constraints.Min;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+
+import jakarta.validation.constraints.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,18 +28,25 @@ public abstract class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+ // 💡 Double sécurité : non nul au sens Java et génère un "NOT NULL" en SQL Server
+    @NotBlank
+    @Size(max = 100)
+    @Column(nullable = false, length = 100)
     private String name;
 
+    // 💡 Pas de prix négatif autorisé à la persistance
+    @NotNull
+    @PositiveOrZero
     @Column(nullable = false, precision = 10, scale = 2)
     @Min(0) // <-- Règle de gestion : Prix minimum de 0
     private BigDecimal price;
 
+    @Size(max = 1000)
+    @Column(length = 1000)
     private String description;
 
     protected String productType;
     
-    // @JsonIgnore // 💡 Dit à Jackson de ne PAS inclure cette méthode dans le JSON final
     public String getProductType() {
         productType = "product";
         return productType;

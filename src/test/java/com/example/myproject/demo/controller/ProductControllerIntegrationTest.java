@@ -25,11 +25,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.hasItem;
 // Importation statique du matcher Hamcrest vérifiant qu'une valeur n'est pas nulle (ex: un ID généré)
 import static org.hamcrest.Matchers.notNullValue;
+// Importation statique des transactions pour empêcher sauvegarde dans la base de données via rollback en fin de test
 import org.springframework.transaction.annotation.Transactional; // 💡 1. IMPORT INDISPENSABLE
-
+// Importation statique pour forcer la langue en français et ainsi éviter les conflits de langues anglais-français lors des tests
 import org.junit.jupiter.api.BeforeAll; // 💡 Ajoutez cet import tout en haut
 import java.util.Locale;
-
 
 /**
  * Classe de test d'intégration globale.
@@ -47,7 +47,8 @@ class ProductControllerIntegrationTest {
 
     @BeforeAll
     static void initAll() {
-        // 💡 Force la machine virtuelle Java (JVM) à utiliser le français pour TOUT ce test, y compris sur Jenkins
+        // 💡 Force la machine virtuelle Java (JVM) à utiliser le français pour TOUT ce
+        // test, y compris sur Jenkins
         Locale.setDefault(Locale.FRANCE);
     }
 

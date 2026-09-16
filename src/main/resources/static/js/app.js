@@ -1504,6 +1504,13 @@ function buildProductFromForm(prefix) {
         productType:
             selectedProductType,
 
+        id:
+        Number(
+            document
+                    .getElementById(`${prefix}-id`)
+            .value
+        ),
+
         name:
             document
                 .getElementById(`${prefix}-name`)
@@ -2227,8 +2234,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.isbn || "-"
-                        )}
+                product.isbn || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2239,8 +2246,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.author || "-"
-                        )}
+                product.author || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2251,8 +2258,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.publisher || "-"
-                        )}
+                product.publisher || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2286,8 +2293,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.developer || "-"
-                        )}
+                product.developer || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2298,8 +2305,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.platform || "-"
-                        )}
+                product.platform || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2310,8 +2317,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.genre || "-"
-                        )}
+                product.genre || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2322,8 +2329,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.ageRating || "-"
-                        )}
+                product.ageRating || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2347,8 +2354,8 @@ function showProductResult(
 
                     <strong>
                         ${escapeHtml(
-                            product.director || "-"
-                        )}
+                product.director || "-"
+            )}
                     </strong>
 
                 </div>
@@ -2404,10 +2411,10 @@ function showProductResult(
 
                 <strong>
                     ${escapeHtml(
-                        product.type ||
-                        selectedProductType ||
-                        "-"
-                    )}
+        product.type ||
+        selectedProductType ||
+        "-"
+    )}
                 </strong>
 
             </div>
@@ -2418,8 +2425,8 @@ function showProductResult(
 
                 <strong>
                     ${escapeHtml(
-                        product.name || "-"
-                    )}
+        product.name || "-"
+    )}
                 </strong>
 
             </div>
@@ -2440,8 +2447,8 @@ function showProductResult(
 
                 <strong>
                     ${escapeHtml(
-                        product.description || "-"
-                    )}
+        product.description || "-"
+    )}
                 </strong>
 
             </div>
@@ -2506,14 +2513,14 @@ function showProductsTable(products) {
 
                 <td>
                     ${escapeHtml(
-                        product.productType || "-"
-                    )}
+            product.productType || "-"
+        )}
                 </td>
 
                 <td>
                     ${escapeHtml(
-                        product.name || "-"
-                    )}
+            product.name || "-"
+        )}
                 </td>
 
                 <td>
@@ -2522,14 +2529,14 @@ function showProductsTable(products) {
 
                 <td>
                     ${escapeHtml(
-                        getSpecificSummary(product)
-                    )}
+            getSpecificSummary(product)
+        )}
                 </td>
 
                 <td>
                     ${escapeHtml(
-                        product.description || "-"
-                    )}
+            product.description || "-"
+        )}
                 </td>
 
             </tr>

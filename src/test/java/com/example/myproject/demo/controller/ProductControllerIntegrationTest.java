@@ -27,6 +27,10 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.notNullValue;
 import org.springframework.transaction.annotation.Transactional; // 💡 1. IMPORT INDISPENSABLE
 
+import org.junit.jupiter.api.BeforeAll; // 💡 Ajoutez cet import tout en haut
+import java.util.Locale;
+
+
 /**
  * Classe de test d'intégration globale.
  * Elle simule de bout en bout l'envoi de requêtes HTTP à l'API, l'exécution du
@@ -40,6 +44,12 @@ import org.springframework.transaction.annotation.Transactional; // 💡 1. IMPO
 @Transactional // 💡 2. TOUT SE JOUÉ ICI : Annule automatiquement les écritures SQL à la fin de
                // chaque test !
 class ProductControllerIntegrationTest {
+
+    @BeforeAll
+    static void initAll() {
+        // 💡 Force la machine virtuelle Java (JVM) à utiliser le français pour TOUT ce test, y compris sur Jenkins
+        Locale.setDefault(Locale.FRANCE);
+    }
 
     @Autowired // Injecte automatiquement l'instance de simulation HTTP configurée par Spring
     private MockMvc mockMvc; // Déclaration de la variable MockMvc qui servira à appeler nos routes REST

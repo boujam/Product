@@ -1,4 +1,3 @@
-/* 
 package com.example.myproject.demo;
 
 import com.example.myproject.demo.entity.Product;
@@ -12,7 +11,9 @@ class ProductTest {
     void shouldCreateProduct() {
 
         // Arrange
-        Product product = new Product();
+        Product product = new Product() {
+            
+        };
 
         // Act
         product.setId(1L);
@@ -35,7 +36,9 @@ class ProductTest {
     void shouldGenerateProductToString() {
 
         // Arrange
-        Product product = new Product();
+        Product product = new Product() {
+            
+        };
 
         product.setId(1L);
         product.setName("Ordinateur");
@@ -55,4 +58,3 @@ class ProductTest {
     }
 
 }
-*/

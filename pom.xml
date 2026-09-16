@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://apache.org"
+         xmlns:xsi="http://w3.org"
+         xsi:schemaLocation="http://apache.org https://apache.org">
     <modelVersion>4.0.0</modelVersion>
+    <!-- ===================================================================== -->
+    <!-- PROJET PARENT (Version stable officielle de Spring Boot) -->
+    <!-- ===================================================================== -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.1.0</version>
+        <version>3.3.4</version>
+        <!-- Correction : Passage à une version 3.x valide pour télécharger MockMvc -->
         <relativePath />
         <!-- lookup parent from repository -->
     </parent>
+    <!-- Coordonnées uniques de votre projet au sein de votre espace de travail -->
     <groupId>com.example.myproject</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo</name>
     <description />
     <url />
+    <!-- Bloc des métadonnées optionnelles du projet Maven -->
     <licenses>
         <license />
     </licenses>
@@ -28,93 +34,102 @@
         <tag />
         <url />
     </scm>
+    <!-- Configuration globale des propriétés (version du Kit de Développement Java cible) -->
     <properties>
         <java.version>21</java.version>
     </properties>
     <dependencies>
+        <!-- ===================================================================== -->
+        <!-- CORE & WEB FRAMEWORK -->
+        <!-- ===================================================================== -->
+        <!-- LE STARTER WEB OFFICIEL : Active l'architecture MVC, le conteneur Tomcat intégré et l'infrastructure de routage HTTP de votre API -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- SPRING BOOT DEVTOOLS : Fournit le rechargement à chaud automatique du code (Restart) et des fichiers statiques pendant le développement -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- LOMBOK : Bibliothèque de génération de code à la compilation qui supprime les Getters, Setters, Constructeurs et toString() verbeux via des annotations -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Spring Data JPA / Hibernate -->
+        <!-- ===================================================================== -->
+        <!-- COUCHE DE PERSISTANCE DE DONNÉES (DATABASE) -->
+        <!-- ===================================================================== -->
+        <!-- SPRING DATA JPA : Intègre Hibernate et l'API de persistance Jakarta permettant de mapper vos entités Java aux tables SQL et d'utiliser les Repositories -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- Spring Boot Test : Tests généraux -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Test JPA -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-data-jpa-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Base de données en mémoire pour les tests -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Driver JDBC SQL Server -->
+        <!-- DRIVER JDBC MICROSOFT SQL SERVER : Permet à Hibernate et à votre application Spring Boot de se connecter et de communiquer avec votre base SQL Server réelle -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>13.4.0.jre11</version>
         </dependency>
-        <!-- jsonschema-generator : alternative moderne compatible Jackson 3 -->
+        <!-- ===================================================================== -->
+        <!-- VALIDATION ET MOTEUR DE SCHÉMAS JSON -->
+        <!-- ===================================================================== -->
+        <!-- SPRING BOOT STARTER VALIDATION : Fournit l'API standard Jakarta Validation et son moteur d'exécution (comme l'interprétation de @NotBlank, @Min, @Pattern...) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!-- VICTOOLS JSONSCHEMA GENERATOR : Bibliothèque moderne servant à analyser vos classes Java de requêtes (DTO) pour en extraire dynamiquement des fichiers de spécification JSON Schema -->
         <dependency>
             <groupId>com.github.victools</groupId>
             <artifactId>jsonschema-generator</artifactId>
             <version>4.37.0</version>
         </dependency>
-        <!-- jsonschema-generator : Jakarta Validation -->
+        <!-- VICTOOLS MODULE JAKARTA VALIDATION : Greffon additionnel permettant au générateur de traduire automatiquement les annotations (@Min, @Size, @Pattern...) en règles JSON Schema -->
         <dependency>
             <groupId>com.github.victools</groupId>
             <artifactId>jsonschema-module-jakarta-validation</artifactId>
             <version>4.37.0</version>
-            <!-- Alignée avec la version du générateur -->
         </dependency>
-        <!-- Spring Boot Starter Validation : Fournit l'API Jakarta Validation requise -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
+        <!-- NETWORKNT JSON SCHEMA VALIDATOR : Moteur de validation ultra-rapide servant à confronter un texte JSON brut reçu d'une requête HTTP par rapport à un fichier de schéma stocké sur le disque -->
         <dependency>
             <groupId>com.networknt</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>1.5.1</version>
         </dependency>
+        <!-- ===================================================================== -->
+        <!-- ENVIRONNEMENT DE TESTS UNITAIRES ET D'INTÉGRATION -->
+        <!-- ===================================================================== -->
+        <!-- SPRING BOOT STARTER TEST : Le couteau suisse officiel des tests (Incorpore JUnit 5, MockMvc pour simuler les appels HTTP, AssertJ, Hamcrest et Mockito) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- BASE DE DONNÉES EN MÉMOIRE H2 : S'active exclusivement durant la phase de test pour simuler une base de données temporaire isolée et ultra-rapide sans altérer votre base SQL Server réelle -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <!-- Configuration de la cinématique de build et des plugins d'assistance de compilation -->
     <build>
         <plugins>
+            <!-- Plugin Spring Boot officiel chargé d'empaqueter l'application sous forme de fichier JAR exécutable autonome ("Fat JAR") -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!-- Plugin de compilation Apache Maven configuré explicitement pour orchestrer la génération conjointe des classes et des processeurs d'annotations de Lombok -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <executions>
+                    <!-- Orchestration de la phase de compilation du code source principal de l'application -->
                     <execution>
                         <id>default-compile</id>
                         <phase>compile</phase>
@@ -130,6 +145,7 @@
                             </annotationProcessorPaths>
                         </configuration>
                     </execution>
+                    <!-- Orchestration de la phase de compilation spécifique liée aux fichiers de tests unitaires -->
                     <execution>
                         <id>default-testCompile</id>
                         <phase>test-compile</phase>

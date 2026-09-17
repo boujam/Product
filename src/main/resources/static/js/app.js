@@ -1504,13 +1504,6 @@ function buildProductFromForm(prefix) {
         productType:
             selectedProductType,
 
-        id:
-        Number(
-            document
-                    .getElementById(`${prefix}-id`)
-            .value
-        ),
-
         name:
             document
                 .getElementById(`${prefix}-name`)
@@ -1532,6 +1525,12 @@ function buildProductFromForm(prefix) {
 
     };
 
+    // Ajoute l'id uniquement s'il existe
+    const idElement = document.getElementById(`${prefix}-id`);
+
+    if (idElement && idElement.value !== null && idElement.value.trim() !== "") {
+        product.id = Number(idElement.value);
+    }
 
     switch (selectedProductType) {
 

@@ -119,7 +119,7 @@ pipeline {
     stage('Deploy') {
         steps {
             echo '======================================'
-            echo 'Déploiement de l’application'
+            echo "Déploiement de l'application"
             echo '======================================'
 
             withCredentials([

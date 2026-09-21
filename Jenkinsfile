@@ -130,8 +130,7 @@ pipeline {
                     # Le port Docker:8081 est redirigé vers le port d'entrée de l'app Spring Boot:8080
 
                     docker run -d \
-                        --name mon-service \
-                        --restart unless-stopped \
+                        --name mon-app \
                         -p 8081:8080 \
                         mon-app:latest
                 '''

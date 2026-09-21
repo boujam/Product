@@ -136,9 +136,9 @@ pipeline {
                         docker run -d \
                             --name mon-app \
                             -p 8081:8080 \
-                            -e 'DB_URL=jdbc:sqlserver://192.168.128.103:1433;databaseName=testpro3;encrypt=true;trustServerCertificate=true' \
-                            -e "DB_USERNAME=$DB_USERNAME" \
-                            -e "DB_PASSWORD=$DB_PASSWORD" \
+                            -e DB_URL="jdbc:sqlserver://192.168.128.103:1433;databaseName=testpro3;encrypt=true;trustServerCertificate=true" \
+                            -e DB_USERNAME="$DB_USERNAME" \
+                            -e DB_PASSWORD="$DB_PASSWORD" \
                             mon-app:latest
                     '''
                 }

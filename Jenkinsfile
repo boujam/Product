@@ -111,7 +111,7 @@ pipeline {
                 echo '======================================'
 
                 sh '''
-                    docker build -t mon-service:latest .
+                    docker build -t mon-app:latest .
                 '''
             }
         }
@@ -123,8 +123,8 @@ pipeline {
                 echo '======================================'
 
                 sh '''
-                    docker stop mon-service || true
-                    docker rm mon-service || true
+                    docker stop mon-app || true
+                    docker rm mon-app || true
                     
                     # Application accessible depuis http://192.168.128.103:8081
                     # Le port Docker:8081 est redirigé vers le port d'entrée de l'app Spring Boot:8080
@@ -133,7 +133,7 @@ pipeline {
                         --name mon-service \
                         --restart unless-stopped \
                         -p 8081:8080 \
-                        mon-service:latest
+                        mon-app:latest
                 '''
             }
         }

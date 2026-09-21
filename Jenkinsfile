@@ -119,29 +119,21 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo '======================================'
-                echo "Déploiement de l'application"
+                echo 'Déploiement du service'
                 echo '======================================'
 
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'sqlserver-credentials',
-                        usernameVariable: 'DB_USERNAME',
-                        passwordVariable: 'DB_PASSWORD'
-                    )
-                ]) {
-                    sh '''
-                        docker stop mon-app || true
-                        docker rm mon-app || true
+                sh '''
+                    docker stop mon-app || true
+                    docker rm mon-app || true
+                    
+                    # Application accessible depuis http://192.168.128.103:8081
+                    # Le port Docker:8081 est redirigé vers le port d'entrée de l'app Spring Boot:8080
 
-                        docker run -d \
-                            --name mon-app \
-                            -p 8081:8080 \
-                            -e DB_URL="jdbc:sqlserver://192.168.128.103:1433;databaseName=testpro3;encrypt=true;trustServerCertificate=true" \
-                            -e DB_USERNAME="$DB_USERNAME" \
-                            -e DB_PASSWORD="$DB_PASSWORD" \
-                            mon-app:latest
-                    '''
-                }
+                    docker run -d \
+                        --name mon-app \
+                        -p 8081:8080 \
+                        mon-app:latest
+                '''
             }
         }
     }

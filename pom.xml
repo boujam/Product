@@ -205,7 +205,7 @@
                                     <arg value="log" />
                                     <arg value="-1" />
                                     <arg value="--format=%cd" />
-                                    <arg value="--date=format:%d/%m/%Y" />
+                                    <arg value="--date=format:%d/%m/%Y %H:%M:%S"/>
                                 </exec>
                                 <!-- ================================================= -->
                                 <!-- Création du dossier static -->

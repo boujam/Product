@@ -1,303 +1,259 @@
-<!DOCTYPE html> <html lang="fr"> <head>
+<!DOCTYPE html>
+<html lang="fr">
 
-<meta charset="UTF-8">
+<head>
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta charset="UTF-8">
 
-<title>Gestion des produits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link
-    rel="stylesheet"
-    href="/css/style.css"
->
+    <title>Gestion des produits</title>
 
-</head> <body> <div class="container">
+    <link rel="stylesheet" href="/css/style.css">
 
-<!-- ========================================= -->
-<!-- EN-TÊTE -->
-<!-- ========================================= -->
+</head>
 
-<header>
+<body>
+    <div class="container">
 
-    <h1>Gestion des produits</h1>
+        <!-- ========================================= -->
+        <!-- EN-TÊTE -->
+        <!-- ========================================= -->
 
-    <p class="subtitle">
-        Sélectionnez le type de produit à gérer
-    </p>
+        <header>
 
-</header>
+            <h1>Gestion des produits</h1>
 
+            <p class="subtitle">
+                Sélectionnez le type de produit à gérer
+            </p>
 
-<!-- ========================================= -->
-<!-- ÉTAPE 1 : CHOIX DU TYPE DE PRODUIT -->
-<!-- ========================================= -->
+        </header>
 
-<section
-    id="product-selection"
-    class="product-selection"
->
 
-    <h2>
-        Choisissez un type de produit
-    </h2>
+        <!-- ========================================= -->
+        <!-- ÉTAPE 1 : CHOIX DU TYPE DE PRODUIT -->
+        <!-- ========================================= -->
 
+        <section id="product-selection" class="product-selection">
 
-    <div class="product-types">
+            <h2>
+                Choisissez un type de produit
+            </h2>
 
 
-        <!-- ================================= -->
-        <!-- LIVRE -->
-        <!-- ================================= -->
+            <div class="product-types">
 
-        <button
-            type="button"
-            class="product-type"
-            data-type="book"
-        >
 
-            <span class="product-icon">
-                📚
-            </span>
+                <!-- ================================= -->
+                <!-- LIVRE -->
+                <!-- ================================= -->
 
-            <span class="product-name">
-                Livre
-            </span>
+                <button type="button" class="product-type" data-type="book">
 
-            <span class="product-description">
-                Gérer les livres
-            </span>
+                    <span class="product-icon">
+                        📚
+                    </span>
 
-        </button>
+                    <span class="product-name">
+                        Livre
+                    </span>
 
+                    <span class="product-description">
+                        Gérer les livres
+                    </span>
 
-        <!-- ================================= -->
-        <!-- JEU VIDÉO -->
-        <!-- ================================= -->
+                </button>
 
-        <button
-            type="button"
-            class="product-type"
-            data-type="video-game"
-        >
 
-            <span class="product-icon">
-                🎮
-            </span>
+                <!-- ================================= -->
+                <!-- JEU VIDÉO -->
+                <!-- ================================= -->
 
-            <span class="product-name">
-                Jeu vidéo
-            </span>
+                <button type="button" class="product-type" data-type="video-game">
 
-            <span class="product-description">
-                Gérer les jeux vidéo
-            </span>
+                    <span class="product-icon">
+                        🎮
+                    </span>
 
-        </button>
+                    <span class="product-name">
+                        Jeu vidéo
+                    </span>
 
+                    <span class="product-description">
+                        Gérer les jeux vidéo
+                    </span>
 
-        <!-- ================================= -->
-        <!-- DVD -->
-        <!-- ================================= -->
+                </button>
 
-        <button
-            type="button"
-            class="product-type"
-            data-type="dvd"
-        >
 
-            <span class="product-icon">
-                🎬
-            </span>
+                <!-- ================================= -->
+                <!-- DVD -->
+                <!-- ================================= -->
 
-            <span class="product-name">
-                DVD
-            </span>
+                <button type="button" class="product-type" data-type="dvd">
 
-            <span class="product-description">
-                Gérer les DVD
-            </span>
+                    <span class="product-icon">
+                        🎬
+                    </span>
 
-        </button>
+                    <span class="product-name">
+                        DVD
+                    </span>
 
+                    <span class="product-description">
+                        Gérer les DVD
+                    </span>
 
-    </div>
+                </button>
 
-</section>
 
+            </div>
 
-<!-- ========================================= -->
-<!-- PRODUIT SÉLECTIONNÉ -->
-<!-- ========================================= -->
+        </section>
 
-<section
-    id="selected-product"
-    class="selected-product hidden"
->
 
-    <div class="selected-product-info">
+        <!-- ========================================= -->
+        <!-- PRODUIT SÉLECTIONNÉ -->
+        <!-- ========================================= -->
 
-        <span>
-            Type de produit sélectionné :
-        </span>
+        <section id="selected-product" class="selected-product hidden">
 
-        <strong id="selected-product-name">
-            -
-        </strong>
+            <div class="selected-product-info">
 
-    </div>
+                <span>
+                    Type de produit sélectionné :
+                </span>
 
+                <strong id="selected-product-name">
+                    -
+                </strong>
 
-    <button
-        type="button"
-        id="change-product-button"
-        class="change-product-button"
-    >
-        Changer de produit
-    </button>
+            </div>
 
-</section>
 
+            <button type="button" id="change-product-button" class="change-product-button">
+                Changer de produit
+            </button>
 
-<!-- ========================================= -->
-<!-- ÉTAPE 2 : CHOIX DE L'OPÉRATION CRUD -->
-<!-- ========================================= -->
+        </section>
 
-<section
-    id="crud-section"
-    class="crud-section hidden"
->
 
-    <h2>
-        Choisissez une opération
-    </h2>
+        <!-- ========================================= -->
+        <!-- ÉTAPE 2 : CHOIX DE L'OPÉRATION CRUD -->
+        <!-- ========================================= -->
 
-    <p class="section-description">
-        Sélectionnez l'opération que vous souhaitez effectuer
-        sur le produit.
-    </p>
+        <section id="crud-section" class="crud-section hidden">
 
+            <h2>
+                Choisissez une opération
+            </h2>
 
-    <div class="crud-buttons">
+            <p class="section-description">
+                Sélectionnez l'opération que vous souhaitez effectuer
+                sur le produit.
+            </p>
 
 
-        <!-- ================================= -->
-        <!-- CREATE -->
-        <!-- ================================= -->
+            <div class="crud-buttons">
 
-        <button
-            type="button"
-            class="crud-button create-button"
-            data-operation="create"
-        >
 
-            <span class="crud-icon">
-                ＋
-            </span>
+                <!-- ================================= -->
+                <!-- CREATE -->
+                <!-- ================================= -->
 
-            <span class="crud-name">
-                Créer
-            </span>
+                <button type="button" class="crud-button create-button" data-operation="create">
 
-            <span class="crud-description">
-                Ajouter un nouveau produit
-            </span>
+                    <span class="crud-icon">
+                        ＋
+                    </span>
 
-        </button>
+                    <span class="crud-name">
+                        Créer
+                    </span>
 
+                    <span class="crud-description">
+                        Ajouter un nouveau produit
+                    </span>
 
-        <!-- ================================= -->
-        <!-- READ -->
-        <!-- ================================= -->
+                </button>
 
-        <button
-            type="button"
-            class="crud-button read-button"
-            data-operation="read"
-        >
 
-            <span class="crud-icon">
-                🔍
-            </span>
+                <!-- ================================= -->
+                <!-- READ -->
+                <!-- ================================= -->
 
-            <span class="crud-name">
-                Lire
-            </span>
+                <button type="button" class="crud-button read-button" data-operation="read">
 
-            <span class="crud-description">
-                Consulter un produit
-            </span>
+                    <span class="crud-icon">
+                        🔍
+                    </span>
 
-        </button>
+                    <span class="crud-name">
+                        Lire
+                    </span>
 
+                    <span class="crud-description">
+                        Consulter un produit
+                    </span>
 
-        <!-- ================================= -->
-        <!-- UPDATE -->
-        <!-- ================================= -->
+                </button>
 
-        <button
-            type="button"
-            class="crud-button update-button"
-            data-operation="update"
-        >
 
-            <span class="crud-icon">
-                ✎
-            </span>
+                <!-- ================================= -->
+                <!-- UPDATE -->
+                <!-- ================================= -->
 
-            <span class="crud-name">
-                Modifier
-            </span>
+                <button type="button" class="crud-button update-button" data-operation="update">
 
-            <span class="crud-description">
-                Modifier un produit
-            </span>
+                    <span class="crud-icon">
+                        ✎
+                    </span>
 
-        </button>
+                    <span class="crud-name">
+                        Modifier
+                    </span>
 
+                    <span class="crud-description">
+                        Modifier un produit
+                    </span>
 
-        <!-- ================================= -->
-        <!-- DELETE -->
-        <!-- ================================= -->
+                </button>
 
-        <button
-            type="button"
-            class="crud-button delete-button"
-            data-operation="delete"
-        >
 
-            <span class="crud-icon">
-                🗑
-            </span>
+                <!-- ================================= -->
+                <!-- DELETE -->
+                <!-- ================================= -->
 
-            <span class="crud-name">
-                Supprimer
-            </span>
+                <button type="button" class="crud-button delete-button" data-operation="delete">
 
-            <span class="crud-description">
-                Supprimer un produit
-            </span>
+                    <span class="crud-icon">
+                        🗑
+                    </span>
 
-        </button>
+                    <span class="crud-name">
+                        Supprimer
+                    </span>
 
+                    <span class="crud-description">
+                        Supprimer un produit
+                    </span>
 
-    </div>
+                </button>
 
-</section>
 
+            </div>
 
-<!-- ========================================= -->
-<!-- ZONE DES FORMULAIRES -->
-<!-- ========================================= -->
+        </section>
 
-<section
-    id="operation-panel"
-    class="operation-panel hidden"
->
 
-    <!--
+        <!-- ========================================= -->
+        <!-- ZONE DES FORMULAIRES -->
+        <!-- ========================================= -->
+
+        <section id="operation-panel" class="operation-panel hidden">
+
+            <!--
         Le formulaire correspondant à l'opération
         sélectionnée sera inséré ici par JavaScript.
 
@@ -309,32 +265,46 @@
         - Suppression d'un livre
     -->
 
-</section>
+        </section>
 
 
-<!-- ========================================= -->
-<!-- ZONE DES RÉSULTATS -->
-<!-- ========================================= -->
+        <!-- ========================================= -->
+        <!-- ZONE DES RÉSULTATS -->
+        <!-- ========================================= -->
 
-<section
-    id="result-panel"
-    class="result-panel hidden"
->
+        <section id="result-panel" class="result-panel hidden">
 
-    <h2>
-        Résultat
-    </h2>
+            <h2>
+                Résultat
+            </h2>
 
 
-    <div
-        id="result-content"
-        class="result-content"
-    >
+            <div id="result-content" class="result-content">
 
-        <!-- Les résultats de l'API seront affichés ici -->
+                <!-- Les résultats de l'API seront affichés ici -->
 
-    </div>
+            </div>
 
-</section>
+        </section>
 
-</div> <!-- ============================================= --> <!-- JAVASCRIPT --> <!-- ============================================= --> <script src="/js/app.js"></script> </body> </html>
+    </div> <!-- ============================================= --> <!-- JAVASCRIPT -->
+    <!-- ============================================= -->
+    <script src="/js/app.js"></script>
+</body>
+
+
+
+
+<footer>
+    <span id="app-version"></span>
+</footer>
+
+<script src="/version.js"></script>
+
+<script>
+    document.getElementById("app-version").textContent =
+        window.APP_VERSION;
+</script>
+
+
+</html>

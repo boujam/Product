@@ -163,6 +163,64 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-version-js</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- ================================================= -->
+                                <!-- Récupération du tag Git -->
+                                <!-- ================================================= -->
+                                <exec executable="git"
+                                      outputproperty="git.tag"
+                                      failifexecutionfails="false">
+                                    <arg value="describe" />
+                                    <arg value="--tags" />
+                                    <arg value="--abbrev=0" />
+                                </exec>
+                                <!-- ================================================= -->
+                                <!-- Récupération du hash du commit -->
+                                <!-- ================================================= -->
+                                <exec executable="git"
+                                      outputproperty="git.commit"
+                                      failifexecutionfails="false">
+                                    <arg value="rev-parse" />
+                                    <arg value="--short" />
+                                    <arg value="HEAD" />
+                                </exec>
+                                <!-- ================================================= -->
+                                <!-- Récupération de la date du commit -->
+                                <!-- ================================================= -->
+                                <exec executable="git"
+                                      outputproperty="git.date"
+                                      failifexecutionfails="false">
+                                    <arg value="log" />
+                                    <arg value="-1" />
+                                    <arg value="--format=%cd" />
+                                    <arg value="--date=format:%d/%m/%Y" />
+                                </exec>
+                                <!-- ================================================= -->
+                                <!-- Création du dossier static -->
+                                <!-- ================================================= -->
+                                <mkdir dir="${project.build.outputDirectory}/static" />
+                                <!-- ================================================= -->
+                                <!-- Génération de version.js -->
+                                <!-- ================================================= -->
+                                <echo file="${project.build.outputDirectory}/static/version.js"
+                                      message="window.APP_VERSION = '${git.tag} - ${git.commit} - ${git.date}';" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

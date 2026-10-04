@@ -2,40 +2,39 @@
 RESET
 ========================================================= */
 
-    {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    }
+}
 
 /* =========================================================
 BODY
 ========================================================= */
 
 body {
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-Helvetica,
-Arial,
-sans-serif;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
 
-background:
-    linear-gradient(
-        135deg,
-        #eef2ff 0%,
-        #f8fafc 50%,
-        #e0f2fe 100%
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8fafc 50%,
+            #e0f2fe 100%
+        );
 
-color: #1e293b;
+    color: #1e293b;
 
-min-height: 100vh;
+    min-height: 100vh;
 
-padding: 40px 20px;
-
+    padding: 20px;
 }
 
 /* =========================================================
@@ -43,11 +42,9 @@ CONTAINER
 ========================================================= */
 
 .container {
-width: 100%;
-max-width: 1200px;
-
-margin: 0 auto;
-
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* =========================================================
@@ -55,28 +52,20 @@ HEADER
 ========================================================= */
 
 header {
-text-align: center;
-
-margin-bottom: 40px;
-
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 header h1 {
-font-size: 2.5rem;
-
-font-weight: 800;
-
-color: #0f172a;
-
-margin-bottom: 10px;
-
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
 }
 
 .subtitle {
-font-size: 1.05rem;
-
-color: #64748b;
-
+    font-size: 0.95rem;
+    color: #64748b;
 }
 
 /* =========================================================
@@ -84,19 +73,14 @@ TITRES DES SECTIONS
 ========================================================= */
 
 section h2 {
-color: #0f172a;
-
-font-size: 1.6rem;
-
-margin-bottom: 10px;
-
+    color: #0f172a;
+    font-size: 1.4rem;
+    margin-bottom: 7px;
 }
 
 .section-description {
-color: #64748b;
-
-margin-bottom: 25px;
-
+    color: #64748b;
+    margin-bottom: 15px;
 }
 
 /* =========================================================
@@ -104,24 +88,17 @@ SECTION CHOIX DU PRODUIT
 ========================================================= */
 
 .product-selection {
-background: #ffffff;
-
-border-radius: 20px;
-
-padding: 35px;
-
-box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.08);
-
-margin-bottom: 25px;
-
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.08);
+    margin-bottom: 15px;
 }
 
 .product-selection h2 {
-text-align: center;
-
-margin-bottom: 30px;
-
+    text-align: center;
+    margin-bottom: 18px;
 }
 
 /* =========================================================
@@ -129,13 +106,9 @@ TYPES DE PRODUITS
 ========================================================= */
 
 .product-types {
-display: grid;
-
-grid-template-columns:
-    repeat(3, 1fr);
-
-gap: 20px;
-
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
 }
 
 /* =========================================================
@@ -143,59 +116,51 @@ BOUTON TYPE DE PRODUIT
 ========================================================= */
 
 .product-type {
-border: 2px solid #e2e8f0;
+    border: 2px solid #e2e8f0;
+    background: #ffffff;
+    border-radius: 14px;
 
-background: #ffffff;
+    padding: 18px 15px;
 
-border-radius: 16px;
+    cursor: pointer;
 
-padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-cursor: pointer;
+    min-height: 135px;
 
-display: flex;
-
-flex-direction: column;
-
-align-items: center;
-
-justify-content: center;
-
-min-height: 190px;
-
-transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .product-type:hover {
-transform: translateY(-5px);
+    transform: translateY(-3px);
 
-border-color: #6366f1;
+    border-color: #6366f1;
 
-box-shadow:
-    0 12px 25px rgba(99, 102, 241, 0.15);
-
+    box-shadow:
+        0 8px 18px rgba(99, 102, 241, 0.15);
 }
 
 .product-type.active {
-border-color: #4f46e5;
+    border-color: #4f46e5;
 
-background:
-    linear-gradient(
-        135deg,
-        #eef2ff,
-        #ffffff
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #ffffff
+        );
 
-box-shadow:
-    0 10px 25px rgba(79, 70, 229, 0.18);
+    box-shadow:
+        0 8px 20px rgba(79, 70, 229, 0.18);
 
-transform: translateY(-3px);
-
+    transform: translateY(-2px);
 }
 
 /* =========================================================
@@ -203,10 +168,8 @@ ICÔNE PRODUIT
 ========================================================= */
 
 .product-icon {
-font-size: 3rem;
-
-margin-bottom: 15px;
-
+    font-size: 2.4rem;
+    margin-bottom: 8px;
 }
 
 /* =========================================================
@@ -214,14 +177,10 @@ NOM PRODUIT
 ========================================================= */
 
 .product-name {
-font-size: 1.25rem;
-
-font-weight: 700;
-
-color: #0f172a;
-
-margin-bottom: 8px;
-
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 5px;
 }
 
 /* =========================================================
@@ -229,12 +188,9 @@ DESCRIPTION PRODUIT
 ========================================================= */
 
 .product-description {
-font-size: 0.9rem;
-
-color: #64748b;
-
-text-align: center;
-
+    font-size: 0.82rem;
+    color: #64748b;
+    text-align: center;
 }
 
 /* =========================================================
@@ -242,50 +198,41 @@ PRODUIT SÉLECTIONNÉ
 ========================================================= */
 
 .selected-product {
-background: #ffffff;
+    background: #ffffff;
 
-border-radius: 15px;
+    border-radius: 12px;
 
-padding: 18px 25px;
+    padding: 12px 18px;
 
-display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-align-items: center;
+    gap: 15px;
 
-justify-content: space-between;
+    box-shadow:
+        0 4px 15px rgba(15, 23, 42, 0.07);
 
-gap: 20px;
+    margin-bottom: 15px;
 
-box-shadow:
-    0 5px 20px rgba(15, 23, 42, 0.07);
-
-margin-bottom: 25px;
-
-border-left:
-    5px solid #4f46e5;
-
+    border-left:
+        4px solid #4f46e5;
 }
 
 .selected-product-info {
-display: flex;
-
-align-items: center;
-
-gap: 10px;
-
-font-size: 0.95rem;
-
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
 }
 
 .selected-product-info span {
-color: #64748b;
+    color: #64748b;
 }
 
 .selected-product-info strong {
-color: #4f46e5;
-
-text-transform: capitalize;
-
+    color: #4f46e5;
+    text-transform: capitalize;
 }
 
 /* =========================================================
@@ -293,31 +240,29 @@ BOUTON CHANGER DE PRODUIT
 ========================================================= */
 
 .change-product-button {
-border: none;
+    border: none;
 
-background: #f1f5f9;
+    background: #f1f5f9;
+    color: #475569;
 
-color: #475569;
+    padding: 8px 13px;
 
-padding: 10px 16px;
+    border-radius: 8px;
 
-border-radius: 9px;
+    cursor: pointer;
 
-cursor: pointer;
+    font-weight: 600;
 
-font-weight: 600;
+    font-size: 0.85rem;
 
-transition:
-    background 0.2s ease,
-    color 0.2s ease;
-
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .change-product-button:hover {
-background: #e2e8f0;
-
-color: #0f172a;
-
+    background: #e2e8f0;
+    color: #0f172a;
 }
 
 /* =========================================================
@@ -325,21 +270,20 @@ SECTION CRUD
 ========================================================= */
 
 .crud-section {
-background: #ffffff;
+    background: #ffffff;
 
-border-radius: 20px;
+    border-radius: 16px;
 
-padding: 35px;
+    padding: 22px;
 
-box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.08);
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.08);
 
-margin-bottom: 25px;
-
+    margin-bottom: 15px;
 }
 
 .crud-section h2 {
-text-align: center;
+    text-align: center;
 }
 
 /* =========================================================
@@ -347,53 +291,52 @@ BOUTONS CRUD
 ========================================================= */
 
 .crud-buttons {
-display: grid;
+    display: grid;
 
-grid-template-columns:
-    repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-gap: 15px;
+    gap: 12px;
 
-margin-top: 30px;
-
+    margin-top: 18px;
 }
 
 .crud-button {
-border: 2px solid #e2e8f0;
+    border: 2px solid #e2e8f0;
 
-background: #ffffff;
+    background: #ffffff;
 
-border-radius: 14px;
+    border-radius: 12px;
 
-padding: 25px 15px;
+    padding: 16px 12px;
 
-cursor: pointer;
+    cursor: pointer;
 
-display: flex;
+    display: flex;
 
-flex-direction: column;
+    flex-direction: column;
 
-align-items: center;
+    align-items: center;
 
-gap: 8px;
+    gap: 5px;
 
-transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    min-height: 105px;
 
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .crud-button:hover {
-transform: translateY(-4px);
+    transform: translateY(-3px);
 
-box-shadow:
-    0 10px 20px rgba(15, 23, 42, 0.08);
-
+    box-shadow:
+        0 8px 16px rgba(15, 23, 42, 0.08);
 }
 
 .crud-button.active {
-color: #ffffff;
+    color: #ffffff;
 }
 
 /* =========================================================
@@ -401,31 +344,23 @@ ICÔNES CRUD
 ========================================================= */
 
 .crud-icon {
-font-size: 2rem;
-
-margin-bottom: 5px;
-
+    font-size: 1.7rem;
+    margin-bottom: 2px;
 }
 
 .crud-name {
-font-size: 1.1rem;
-
-font-weight: 700;
-
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .crud-description {
-font-size: 0.8rem;
-
-color: #64748b;
-
-text-align: center;
-
+    font-size: 0.75rem;
+    color: #64748b;
+    text-align: center;
 }
 
-.crud-button.active
-.crud-description {
-color: rgba(255, 255, 255, 0.85);
+.crud-button.active .crud-description {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* =========================================================
@@ -433,17 +368,15 @@ CREATE
 ========================================================= */
 
 .create-button:hover {
-border-color: #16a34a;
+    border-color: #16a34a;
 }
 
 .create-button.active {
-background: #16a34a;
+    background: #16a34a;
+    border-color: #16a34a;
 
-border-color: #16a34a;
-
-box-shadow:
-    0 10px 20px rgba(22, 163, 74, 0.25);
-
+    box-shadow:
+        0 8px 18px rgba(22, 163, 74, 0.25);
 }
 
 /* =========================================================
@@ -451,17 +384,15 @@ READ
 ========================================================= */
 
 .read-button:hover {
-border-color: #2563eb;
+    border-color: #2563eb;
 }
 
 .read-button.active {
-background: #2563eb;
+    background: #2563eb;
+    border-color: #2563eb;
 
-border-color: #2563eb;
-
-box-shadow:
-    0 10px 20px rgba(37, 99, 235, 0.25);
-
+    box-shadow:
+        0 8px 18px rgba(37, 99, 235, 0.25);
 }
 
 /* =========================================================
@@ -469,17 +400,15 @@ UPDATE
 ========================================================= */
 
 .update-button:hover {
-border-color: #d97706;
+    border-color: #d97706;
 }
 
 .update-button.active {
-background: #d97706;
+    background: #d97706;
+    border-color: #d97706;
 
-border-color: #d97706;
-
-box-shadow:
-    0 10px 20px rgba(217, 119, 6, 0.25);
-
+    box-shadow:
+        0 8px 18px rgba(217, 119, 6, 0.25);
 }
 
 /* =========================================================
@@ -487,17 +416,15 @@ DELETE
 ========================================================= */
 
 .delete-button:hover {
-border-color: #dc2626;
+    border-color: #dc2626;
 }
 
 .delete-button.active {
-background: #dc2626;
+    background: #dc2626;
+    border-color: #dc2626;
 
-border-color: #dc2626;
-
-box-shadow:
-    0 10px 20px rgba(220, 38, 38, 0.25);
-
+    box-shadow:
+        0 8px 18px rgba(220, 38, 38, 0.25);
 }
 
 /* =========================================================
@@ -505,17 +432,16 @@ PANNEAU OPÉRATION
 ========================================================= */
 
 .operation-panel {
-background: #ffffff;
+    background: #ffffff;
 
-border-radius: 20px;
+    border-radius: 16px;
 
-padding: 35px;
+    padding: 22px;
 
-box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.08);
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.08);
 
-margin-bottom: 25px;
-
+    margin-bottom: 15px;
 }
 
 /* =========================================================
@@ -523,21 +449,21 @@ HEADER OPÉRATION
 ========================================================= */
 
 .operation-header {
-margin-bottom: 30px;
+    margin-bottom: 18px;
 
-border-bottom:
-    1px solid #e2e8f0;
+    border-bottom:
+        1px solid #e2e8f0;
 
-padding-bottom: 20px;
-
+    padding-bottom: 12px;
 }
 
 .operation-header h2 {
-margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .operation-header p {
-color: #64748b;
+    color: #64748b;
+    font-size: 0.9rem;
 }
 
 /* =========================================================
@@ -545,36 +471,28 @@ FORMULAIRE
 ========================================================= */
 
 .product-form {
-display: grid;
+    display: grid;
 
-grid-template-columns:
-    repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 
-gap: 20px;
-
+    gap: 14px;
 }
 
 .form-group {
-display: flex;
-
-flex-direction: column;
-
-gap: 8px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .form-group.full-width {
-grid-column:
-1 / -1;
+    grid-column: 1 / -1;
 }
 
 .form-group label {
-font-weight: 600;
-
-color: #334155;
-
-font-size: 0.95rem;
-
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.88rem;
 }
 
 /* =========================================================
@@ -584,52 +502,48 @@ INPUTS
 .form-group input,
 .form-group textarea,
 .form-group select {
-width: 100%;
+    width: 100%;
 
-padding: 13px 14px;
+    padding: 10px 12px;
 
-border:
-    1px solid #cbd5e1;
+    border:
+        1px solid #cbd5e1;
 
-border-radius: 9px;
+    border-radius: 8px;
 
-background: #ffffff;
+    background: #ffffff;
 
-color: #0f172a;
+    color: #0f172a;
 
-font-family: inherit;
+    font-family: inherit;
 
-font-size: 0.95rem;
+    font-size: 0.9rem;
 
-outline: none;
+    outline: none;
 
-transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-border-color: #6366f1;
+    border-color: #6366f1;
 
-box-shadow:
-    0 0 0 3px
-    rgba(99, 102, 241, 0.12);
-
+    box-shadow:
+        0 0 0 3px
+        rgba(99, 102, 241, 0.12);
 }
 
 .form-group textarea {
-min-height: 120px;
-
-resize: vertical;
-
+    min-height: 80px;
+    resize: vertical;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-color: #94a3b8;
+    color: #94a3b8;
 }
 
 /* =========================================================
@@ -637,17 +551,15 @@ ACTIONS FORMULAIRE
 ========================================================= */
 
 .form-actions {
-grid-column:
-1 / -1;
+    grid-column: 1 / -1;
 
-display: flex;
+    display: flex;
 
-justify-content: flex-end;
+    justify-content: flex-end;
 
-gap: 12px;
+    gap: 10px;
 
-margin-top: 10px;
-
+    margin-top: 5px;
 }
 
 /* =========================================================
@@ -655,102 +567,86 @@ BOUTONS D'ACTION
 ========================================================= */
 
 .action-button {
-border: none;
+    border: none;
 
-border-radius: 9px;
+    border-radius: 8px;
 
-padding: 12px 20px;
+    padding: 10px 17px;
 
-font-size: 0.95rem;
+    font-size: 0.9rem;
 
-font-weight: 700;
+    font-weight: 700;
 
-cursor: pointer;
+    cursor: pointer;
 
-transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .action-button:hover {
-transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .create-action {
-background: #16a34a;
-
-color: #ffffff;
-
+    background: #16a34a;
+    color: #ffffff;
 }
 
 .create-action:hover {
-background: #15803d;
+    background: #15803d;
 
-box-shadow:
-    0 6px 15px rgba(22, 163, 74, 0.25);
-
+    box-shadow:
+        0 5px 12px rgba(22, 163, 74, 0.25);
 }
 
 .read-action {
-background: #2563eb;
-
-color: #ffffff;
-
+    background: #2563eb;
+    color: #ffffff;
 }
 
 .read-action:hover {
-background: #1d4ed8;
+    background: #1d4ed8;
 
-box-shadow:
-    0 6px 15px rgba(37, 99, 235, 0.25);
-
+    box-shadow:
+        0 5px 12px rgba(37, 99, 235, 0.25);
 }
 
 .update-action {
-background: #d97706;
-
-color: #ffffff;
-
+    background: #d97706;
+    color: #ffffff;
 }
 
 .update-action:hover {
-background: #b45309;
+    background: #b45309;
 
-box-shadow:
-    0 6px 15px rgba(217, 119, 6, 0.25);
-
+    box-shadow:
+        0 5px 12px rgba(217, 119, 6, 0.25);
 }
 
 .delete-action {
-background: #dc2626;
-
-color: #ffffff;
-
+    background: #dc2626;
+    color: #ffffff;
 }
 
 .delete-action:hover {
-background: #b91c1c;
+    background: #b91c1c;
 
-box-shadow:
-    0 6px 15px rgba(220, 38, 38, 0.25);
-
+    box-shadow:
+        0 5px 12px rgba(220, 38, 38, 0.25);
 }
 
 .load-button {
-background: #475569;
-
-color: #ffffff;
-
+    background: #475569;
+    color: #ffffff;
 }
 
 .load-button:hover {
-background: #334155;
+    background: #334155;
 
-box-shadow:
-    0 6px 15px rgba(71, 85, 105, 0.25);
-
+    box-shadow:
+        0 5px 12px rgba(71, 85, 105, 0.25);
 }
 
 /* =========================================================
@@ -758,21 +654,17 @@ FORMULAIRE READ
 ========================================================= */
 
 #read-one-form {
-max-width: 600px;
-
-margin: 0 auto;
-
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #read-one-form .action-button {
-width: 100%;
+    width: 100%;
 }
 
 #read-all-button {
-display: block;
-
-margin: 0 auto;
-
+    display: block;
+    margin: 0 auto;
 }
 
 /* =========================================================
@@ -780,21 +672,22 @@ WARNING
 ========================================================= */
 
 .warning {
-background: #fef2f2;
+    background: #fef2f2;
 
-color: #991b1b;
+    color: #991b1b;
 
-border:
-    1px solid #fecaca;
+    border:
+        1px solid #fecaca;
 
-border-radius: 9px;
+    border-radius: 8px;
 
-padding: 14px 16px;
+    padding: 10px 13px;
 
-margin-bottom: 20px;
+    margin-bottom: 15px;
 
-font-weight: 600;
+    font-weight: 600;
 
+    font-size: 0.9rem;
 }
 
 /* =========================================================
@@ -802,21 +695,20 @@ RESULTAT
 ========================================================= */
 
 .result-panel {
-background: #ffffff;
+    background: #ffffff;
 
-border-radius: 20px;
+    border-radius: 16px;
 
-padding: 35px;
+    padding: 22px;
 
-box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.08);
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.08);
 
-margin-bottom: 25px;
-
+    margin-bottom: 15px;
 }
 
 .result-panel h2 {
-margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /* =========================================================
@@ -824,44 +716,39 @@ MESSAGES
 ========================================================= */
 
 .message {
-padding: 14px 16px;
+    padding: 10px 13px;
 
-border-radius: 9px;
+    border-radius: 8px;
 
-margin-bottom: 20px;
+    margin-bottom: 15px;
 
-font-weight: 600;
+    font-weight: 600;
 
+    font-size: 0.9rem;
 }
 
 .message.success {
-background: #f0fdf4;
+    background: #f0fdf4;
+    color: #166534;
 
-color: #166534;
-
-border:
-    1px solid #bbf7d0;
-
+    border:
+        1px solid #bbf7d0;
 }
 
 .message.error {
-background: #fef2f2;
+    background: #fef2f2;
+    color: #991b1b;
 
-color: #991b1b;
-
-border:
-    1px solid #fecaca;
-
+    border:
+        1px solid #fecaca;
 }
 
 .message.info {
-background: #eff6ff;
+    background: #eff6ff;
+    color: #1e40af;
 
-color: #1e40af;
-
-border:
-    1px solid #bfdbfe;
-
+    border:
+        1px solid #bfdbfe;
 }
 
 /* =========================================================
@@ -869,64 +756,59 @@ CARTE PRODUIT
 ========================================================= */
 
 .product-card {
-display: grid;
+    display: grid;
 
-grid-template-columns:
-    repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 
-gap: 1px;
+    gap: 1px;
 
-background: #e2e8f0;
+    background: #e2e8f0;
 
-border:
-    1px solid #e2e8f0;
+    border:
+        1px solid #e2e8f0;
 
-border-radius: 12px;
+    border-radius: 10px;
 
-overflow: hidden;
-
+    overflow: hidden;
 }
 
 .product-field {
-background: #ffffff;
+    background: #ffffff;
 
-padding: 18px;
+    padding: 13px;
 
-display: flex;
+    display: flex;
 
-flex-direction: column;
+    flex-direction: column;
 
-gap: 6px;
-
+    gap: 4px;
 }
 
 .product-field span {
-color: #64748b;
+    color: #64748b;
 
-font-size: 0.85rem;
+    font-size: 0.75rem;
 
-font-weight: 600;
+    font-weight: 600;
 
-text-transform: uppercase;
+    text-transform: uppercase;
 
-letter-spacing: 0.03em;
-
+    letter-spacing: 0.03em;
 }
 
 .product-field strong {
-color: #0f172a;
+    color: #0f172a;
 
-font-size: 1rem;
+    font-size: 0.9rem;
 
-font-weight: 600;
+    font-weight: 600;
 
-word-break: break-word;
-
+    word-break: break-word;
 }
 
 .description-field {
-grid-column:
-1 / -1;
+    grid-column: 1 / -1;
 }
 
 /* =========================================================
@@ -934,68 +816,66 @@ TABLEAU
 ========================================================= */
 
 .table-container {
-width: 100%;
+    width: 100%;
 
-overflow-x: auto;
+    overflow-x: auto;
 
-border:
-    1px solid #e2e8f0;
+    border:
+        1px solid #e2e8f0;
 
-border-radius: 12px;
-
+    border-radius: 10px;
 }
 
 table {
-width: 100%;
+    width: 100%;
 
-border-collapse: collapse;
+    border-collapse: collapse;
 
-min-width: 700px;
-
+    min-width: 700px;
 }
 
 thead {
-background: #f8fafc;
+    background: #f8fafc;
 }
 
 th {
-color: #334155;
+    color: #334155;
 
-font-size: 0.85rem;
+    font-size: 0.75rem;
 
-text-transform: uppercase;
+    text-transform: uppercase;
 
-letter-spacing: 0.03em;
+    letter-spacing: 0.03em;
 
-font-weight: 700;
+    font-weight: 700;
 
-text-align: left;
+    text-align: left;
 
-padding: 15px;
+    padding: 10px;
 
-border-bottom:
-    1px solid #e2e8f0;
-
+    border-bottom:
+        1px solid #e2e8f0;
 }
 
 td {
-padding: 15px;
+    padding: 10px;
 
-color: #475569;
+    color: #475569;
 
-border-bottom:
-    1px solid #e2e8f0;
+    font-size: 0.88rem;
 
-vertical-align: top;
+    border-bottom:
+        1px solid #e2e8f0;
 
+    vertical-align: top;
 }
 
 tbody tr:last-child td {
-border-bottom: none;
+    border-bottom: none;
 }
 
 tbody tr:hover {
-background: #f8fafc;
+    background: #f8fafc;
 }
 
 /* =========================================================
@@ -1003,7 +883,86 @@ HIDDEN
 ========================================================= */
 
 .hidden {
-display: none !important;
+    display: none !important;
+}
+
+/* =========================================================
+OPTIMISATION 1080P
+========================================================= */
+
+/*
+    Pour un écran 1920x1080 :
+    - largeur maximale : 1200px
+    - marges verticales réduites
+    - cartes moins hautes
+    - espacements réduits
+    - éléments principaux affichés de manière compacte
+*/
+
+@media (min-width: 901px) and (min-height: 800px) {
+
+    body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    header {
+        margin-bottom: 14px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .product-selection,
+    .crud-section,
+    .operation-panel,
+    .result-panel {
+        margin-bottom: 12px;
+    }
+
+    .product-selection {
+        padding: 18px 22px;
+    }
+
+    .crud-section {
+        padding: 18px 22px;
+    }
+
+    .operation-panel {
+        padding: 20px 22px;
+    }
+
+    .result-panel {
+        padding: 20px 22px;
+    }
+
+    .product-types {
+        gap: 12px;
+    }
+
+    .product-type {
+        min-height: 120px;
+        padding: 14px;
+    }
+
+    .crud-buttons {
+        margin-top: 14px;
+        gap: 10px;
+    }
+
+    .crud-button {
+        min-height: 95px;
+        padding: 13px 10px;
+    }
+
+    .product-form {
+        gap: 12px;
+    }
+
+    .form-group textarea {
+        min-height: 65px;
+    }
 }
 
 /* =========================================================
@@ -1012,16 +971,13 @@ RESPONSIVE - TABLETTE
 
 @media (max-width: 900px) {
 
-.crud-buttons {
-    grid-template-columns:
-        repeat(2, 1fr);
-}
+    .crud-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.product-types {
-    grid-template-columns:
-        1fr;
-}
-
+    .product-types {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* =========================================================
@@ -1030,92 +986,87 @@ RESPONSIVE - MOBILE
 
 @media (max-width: 650px) {
 
-body {
-    padding: 20px 12px;
-}
+    body {
+        padding: 15px 10px;
+    }
 
-header h1 {
-    font-size: 2rem;
-}
+    header h1 {
+        font-size: 1.8rem;
+    }
 
-.product-selection,
-.crud-section,
-.operation-panel,
-.result-panel {
-    padding: 22px;
-}
+    .product-selection,
+    .crud-section,
+    .operation-panel,
+    .result-panel {
+        padding: 18px;
+    }
 
-.crud-buttons {
-    grid-template-columns: 1fr;
-}
+    .crud-buttons {
+        grid-template-columns: 1fr;
+    }
 
-.product-form {
-    grid-template-columns: 1fr;
-}
+    .product-form {
+        grid-template-columns: 1fr;
+    }
 
-.form-group.full-width {
-    grid-column: auto;
-}
+    .form-group.full-width {
+        grid-column: auto;
+    }
 
-.form-actions {
-    grid-column: auto;
+    .form-actions {
+        grid-column: auto;
+        flex-direction: column;
+    }
 
-    flex-direction: column;
-}
+    .form-actions .action-button {
+        width: 100%;
+    }
 
-.form-actions .action-button {
-    width: 100%;
-}
+    .selected-product {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-.selected-product {
-    flex-direction: column;
+    .selected-product-info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-    align-items: stretch;
-}
+    .change-product-button {
+        width: 100%;
+    }
 
-.selected-product-info {
-    justify-content: center;
+    .product-card {
+        grid-template-columns: 1fr;
+    }
 
-    flex-wrap: wrap;
-}
-
-.change-product-button {
-    width: 100%;
-}
-
-.product-card {
-    grid-template-columns: 1fr;
-}
-
-.description-field {
-    grid-column: auto;
-}
-
+    .description-field {
+        grid-column: auto;
+    }
 }
 
 /* =========================================================
-PETITS ECRANS
+PETITS ÉCRANS
 ========================================================= */
 
 @media (max-width: 400px) {
 
-.product-selection,
-.crud-section,
-.operation-panel,
-.result-panel {
-    padding: 18px;
-}
+    .product-selection,
+    .crud-section,
+    .operation-panel,
+    .result-panel {
+        padding: 15px;
+    }
 
-header h1 {
-    font-size: 1.7rem;
-}
+    header h1 {
+        font-size: 1.6rem;
+    }
 
-.product-icon {
-    font-size: 2.5rem;
-}
+    .product-icon {
+        font-size: 2.2rem;
+    }
 
-.crud-icon {
-    font-size: 1.7rem;
-}
-
+    .crud-icon {
+        font-size: 1.6rem;
+    }
 }

@@ -46,9 +46,10 @@ LEFT JOIN dvd d
 ORDER BY p.id;
 */
 
+/*
 SELECT COUNT(*) AS nombre_produits
 FROM product;
-
+*/
 
 SELECT
     product_type,

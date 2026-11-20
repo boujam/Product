@@ -1,347 +1,183 @@
-USE testpro3;
-
-/* ============================================================
+/* =====================================================
    CREATION DE 10 JEUX VIDEO
-   ============================================================ */
+   Tables : product et video_game
+   Strategie JPA : InheritanceType.JOINED
+   ===================================================== */
+
+SET NOCOUNT ON;
 
 DECLARE @ProductId BIGINT;
 
 
-/* ============================================================
-   JEU VIDEO 1
-   ============================================================ */
+/* =====================================================
+   VIDEO GAME 1
+   ===================================================== */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'The Legend of Zelda Tears of the Kingdom',
-    69.99,
-    'Une aventure epique dans le royaume d Hyrule.',
-    'video-game'
-);
+VALUES ('The Witcher 3 Wild Hunt', 39.90,
+        'Jeu de role en monde ouvert dans un univers fantastique.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Nintendo',
-    'Nintendo Switch',
-    'Adventure',
-    'PEGI 12'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'CD Projekt Red', 'PC, PS5, Xbox Series X',
+        'Action RPG', 'PEGI 18');
 
 
-/* ============================================================
-   JEU VIDEO 2
-   ============================================================ */
+/* VIDEO GAME 2 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Elden Ring',
-    59.99,
-    'Un RPG d action dans un vaste monde fantastique.',
-    'video-game'
-);
+VALUES ('Minecraft', 29.90,
+        'Jeu de construction et de survie dans un monde en blocs.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'FromSoftware',
-    'PlayStation 5',
-    'RPG',
-    'PEGI 16'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'Mojang Studios', 'PC, PS5, Xbox, Switch',
+        'Sandbox', 'PEGI 7');
 
 
-/* ============================================================
-   JEU VIDEO 3
-   ============================================================ */
+/* VIDEO GAME 3 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'The Witcher 3 Wild Hunt',
-    39.99,
-    'Une aventure RPG dans un monde fantastique immense.',
-    'video-game'
-);
+VALUES ('Grand Theft Auto V', 24.90,
+        'Jeu d action en monde ouvert dans la ville de Los Santos.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'CD Projekt Red',
-    'PC',
-    'RPG',
-    'PEGI 18'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'Rockstar Games', 'PC, PS5, Xbox',
+        'Action Adventure', 'PEGI 18');
 
 
-/* ============================================================
-   JEU VIDEO 4
-   ============================================================ */
+/* VIDEO GAME 4 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Grand Theft Auto V',
-    29.99,
-    'Un jeu d action et d exploration dans une grande ville ouverte.',
-    'video-game'
-);
+VALUES ('The Legend of Zelda Breath of the Wild', 49.90,
+        'Aventure et exploration dans le royaume de Hyrule.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Rockstar Games',
-    'PlayStation 5',
-    'Open World',
-    'PEGI 18'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'Nintendo', 'Nintendo Switch',
+        'Action Adventure', 'PEGI 12');
 
 
-/* ============================================================
-   JEU VIDEO 5
-   ============================================================ */
+/* VIDEO GAME 5 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Super Mario Odyssey',
-    49.99,
-    'Une aventure de plateforme mettant en scene Mario.',
-    'video-game'
-);
+VALUES ('FIFA 25', 59.90,
+        'Simulation de football avec des equipes internationales.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Nintendo',
-    'Nintendo Switch',
-    'Platform',
-    'PEGI 7'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'EA Sports', 'PC, PS5, Xbox',
+        'Sports', 'PEGI 3');
 
 
-/* ============================================================
-   JEU VIDEO 6
-   ============================================================ */
+/* VIDEO GAME 6 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Resident Evil Village',
-    44.99,
-    'Une aventure horrifique dans un village mysterieux.',
-    'video-game'
-);
+VALUES ('God of War Ragnarok', 54.90,
+        'Aventure mythologique avec Kratos et Atreus.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Capcom',
-    'PlayStation 5',
-    'Horror',
-    'PEGI 18'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'Santa Monica Studio', 'PS4, PS5',
+        'Action Adventure', 'PEGI 18');
 
 
-/* ============================================================
-   JEU VIDEO 7
-   ============================================================ */
+/* VIDEO GAME 7 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Forza Horizon 5',
-    54.99,
-    'Un jeu de course en monde ouvert.',
-    'video-game'
-);
+VALUES ('Cyberpunk 2077', 34.90,
+        'Jeu de role futuriste dans Night City.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Electronic Arts',
-    'Xbox Series X',
-    'Racing',
-    'PEGI 3'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'CD Projekt Red', 'PC, PS5, Xbox',
+        'Action RPG', 'PEGI 18');
 
 
-/* ============================================================
-   JEU VIDEO 8
-   ============================================================ */
+/* VIDEO GAME 8 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Minecraft',
-    26.99,
-    'Un jeu de construction et de survie dans un monde ouvert.',
-    'video-game'
-);
+VALUES ('Animal Crossing New Horizons', 44.90,
+        'Simulation de vie sur une ile tropicale.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Mojang',
-    'PC',
-    'Simulation',
-    'PEGI 7'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'Nintendo', 'Nintendo Switch',
+        'Simulation', 'PEGI 3');
 
 
-/* ============================================================
-   JEU VIDEO 9
-   ============================================================ */
+/* VIDEO GAME 9 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'God of War Ragnarok',
-    69.99,
-    'Une aventure mythologique avec Kratos et Atreus.',
-    'video-game'
-);
+VALUES ('Elden Ring', 49.90,
+        'Jeu de role action dans un vaste monde fantastique.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Santa Monica Studio',
-    'PlayStation 5',
-    'Action',
-    'PEGI 18'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'FromSoftware', 'PC, PS5, Xbox',
+        'Action RPG', 'PEGI 16');
 
 
-/* ============================================================
-   JEU VIDEO 10
-   ============================================================ */
+/* VIDEO GAME 10 */
 
 INSERT INTO product (name, price, description, product_type)
-VALUES (
-    'Tekken 8',
-    64.99,
-    'Un jeu de combat avec de nombreux personnages.',
-    'video-game'
-);
+VALUES ('Gran Turismo 7', 39.90,
+        'Simulation automobile avec de nombreux vehicules.',
+        'video-game');
 
 SET @ProductId = SCOPE_IDENTITY();
 
-INSERT INTO video_game
-(
-    id,
-    developer,
-    platform,
-    genre,
-    age_rating
-)
-VALUES
-(
-    @ProductId,
-    'Bandai Namco',
-    'PlayStation 5',
-    'Fighting',
-    'PEGI 12'
-);
+INSERT INTO video_game (id, developer, platform, genre, age_rating)
+VALUES (@ProductId, 'Polyphony Digital', 'PS4, PS5',
+        'Racing', 'PEGI 3');
 
 
-/* ============================================================
-   VERIFICATION
-   ============================================================ */
+/* =====================================================
+   VERIFICATION DES 10 JEUX VIDEO
+   ===================================================== */
 
 SELECT
     p.id,
     p.name,
     p.price,
     p.description,
-    p.product_type,
     vg.developer,
     vg.platform,
     vg.genre,
     vg.age_rating
 FROM product p
-INNER JOIN video_game vg
-    ON vg.id = p.id
+INNER JOIN video_game vg ON p.id = vg.id
+WHERE p.product_type = 'video-game'
 ORDER BY p.id;
+
+
+/* =====================================================
+   STATISTIQUES
+   ===================================================== */
+
+SELECT
+    COUNT(*) AS total_video_games,
+    MIN(p.price) AS minimum_price,
+    MAX(p.price) AS maximum_price,
+    AVG(p.price) AS average_price
+FROM product p
+INNER JOIN video_game vg ON p.id = vg.id;
